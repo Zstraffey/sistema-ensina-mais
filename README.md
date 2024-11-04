@@ -25,5 +25,3 @@ Não é de hoje que muitas plataformas físicas buscam por trazer o físico para
 ## LINGUAGEM
 
 Para este projeto foi proposto a utilização da linguagem C#, uma linguagem de programação, multiparadigma (que são linguagens que aceitam diversos paradigmas de programação, paradigmas de programação são por exemplo se ela é voltada a eventos ou se é voltada para objetos, ou, voltada para modelos lógicos ou funcionais), de tipagem forte (não realizam conversões automaticamente, por exemplo não concatena um tipo de dado textual com um valor inteiro), desenvolvida pela Microsoft como parte da plataforma .NET, que é uma plataforma de desenvolvimento e execução para sistemas e aplicações, podendo ser executada em sistemas que também comportem o .NET FRAMEWORK. Esta linguagem comportará perfeitamente nosso sistema pois traz desde recursos básicos, até recursos mais avançados como herança, orientação a objetos, classes.
-
-ooi

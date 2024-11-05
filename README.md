@@ -28,7 +28,7 @@ Para este projeto foi proposto a utilização da linguagem C#, uma linguagem de 
 
 ## Requisitos Funcionais :hammer:
 
-> CRUD Funcionários
+> CRUD de Funcionários
 
 Criar, Ler, Alterar e Remover dados de funcionários, com todas essas ações estando dentro da Lei Geral de Proteção de Dados Pessoais (LGPD) que vai tratar do tratamento de dados pessoais de pessoas naturais, marcando quando esses dados podem ser colhidos, como devem ser armazenados e decretando mecanismo para proteger os titulares dos dados.
 

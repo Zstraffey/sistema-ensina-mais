@@ -73,8 +73,13 @@ Requisitos não funcionais são os requisitos que estarão ligados com o uso da 
 > Otimização e compatilibidade com dispositivos de baixo hardware.
 
 Mínimos:
+
 SO: Windows 10
+
 Processador: 1 GHz
+
 Memória Ram: 1 GB
+
 Armazenamento: 200MB
+
 Acesso a Internet

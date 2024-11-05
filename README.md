@@ -28,6 +28,8 @@ Para este projeto foi proposto a utilização da linguagem C#, uma linguagem de 
 
 ## Requisitos Funcionais :hammer:
 
+Os requisitos funcionais representam o que o software faz, sendo desde tarefas a serviços. Sendo basicamente um conjunto de entradas do usuário, seu comportamento dentro do sistema e as saídas, respostas que o software dará ao utilizador.
+
 > CRUD de Funcionários
 
 Criar, Ler, Alterar e Remover dados de funcionários, com todas essas ações estando dentro da Lei Geral de Proteção de Dados Pessoais (LGPD) que vai tratar do tratamento de dados pessoais de pessoas naturais, marcando quando esses dados podem ser colhidos, como devem ser armazenados e decretando mecanismo para proteger os titulares dos dados.
@@ -63,3 +65,16 @@ A secretária da escola tem acesso ao CRUD de alunos e produtos.
 > Separação de acesso aos sistemas com base no nível de usuário
 
 Através de uma resposta do banco de dados, nosso sistema irá encaminhar o usuário para sua determinada área após realizar o login
+
+## Requisitos Não Funcionais :black_nib:
+
+Requisitos não funcionais são os requisitos que estarão ligados com o uso da aplicação, sendo em termos de segurança, facilidades, manuntenção e tecnologias envolvidas. Estes requisitos dizem respeito a como as funcionalidades serão entregues ao usuário do software.
+
+> Otimização e compatilibidade com dispositivos de baixo hardware.
+
+Mínimos:
+SO: Windows 10
+Processador: 1 GHz
+Memória Ram: 1 GB
+Armazenamento: 200MB
+Acesso a Internet

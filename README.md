@@ -83,3 +83,26 @@ Memória Ram: 1 GB
 Armazenamento: 200MB
 
 Acesso a Internet
+
+## História de Usuário :mega:
+
+### Como Administrador:
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Funcionários
+> Para adicionar empregados no sistema, realizar consultas aos dados, editar os dados caso surja necessidade, e remover empregados que já não fazem mais parte da matriz local
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Alunos		 
+> Para adicionar alunos no sistema, realizar consultas aos dados, editar os dados caso surja necessidade, e remover alunos que já não fazem mais parte da matriz local
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Produtos Comercializáveis
+> Para adicionar produtos no sistema, realizar consultas aos dados, editar os dados caso surja necessidade, e remover produtos que já não fazem mais parte da matriz local
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Cursos
+> Para adicionar os cursos da matriz local, visualizar os cursos que foram cadastrados para analisar se as informações estão corretas, igualmente podendo editar e excluir cursos, caso haja necessidade
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Cargos
+> Para adicionar os cargos da matriz local, visualizar os cargos que foram cadastrados para analisar se as informações estão corretas, igualmente podendo editar e excluir cargos, caso haja necessidade
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Aulas
+> Para atualizar as aulas dos professores caso haja necessidade, também podendo visualizar as aulas que foram sendo adicionadas no sistema e por fim alterando ou excluindo as aulas de acordo com as demandas
+

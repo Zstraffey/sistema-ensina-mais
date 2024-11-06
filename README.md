@@ -106,3 +106,16 @@ Posso Cadastrar, Visualizar, Alterar, Excluir Cargos
 Posso Cadastrar, Visualizar, Alterar, Excluir Aulas
 > Para atualizar as aulas dos professores caso haja necessidade, também podendo visualizar as aulas que foram sendo adicionadas no sistema e por fim alterando ou excluindo as aulas de acordo com as demandas
 
+### Como Professor: 
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Aulas
+> Para adicionar as aulas que lecionei, além disso posso visualizá-las em busca de possíveis erros, consequentemente podendo alterá-las caso necessário, ou excluí-las
+
+### Como Secretaria: 
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Produtos Comercializáveis
+> Para adicionar produtos no sistema, realizar consultas aos dados, editar os dados caso surja necessidade, e remover produtos que já não fazem mais parte da matriz local
+
+Posso Cadastrar, Visualizar, Alterar, Excluir Alunos		 
+> Para adicionar alunos no sistema, realizar consultas aos dados, editar os dados caso surja necessidade, e remover alunos que já não fazem mais parte da matriz local
+

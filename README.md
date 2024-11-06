@@ -68,9 +68,9 @@ Através de uma resposta do banco de dados, nosso sistema irá encaminhar o usu�
 
 ## Requisitos Não Funcionais :black_nib:
 
-Requisitos não funcionais são os requisitos que estarão ligados com o uso da aplicação, sendo em termos de segurança, facilidades, manuntenção e tecnologias envolvidas. Estes requisitos dizem respeito a como as funcionalidades serão entregues ao usuário do software.
+Requisitos não funcionais são os requisitos que estarão ligados com o uso da aplicação, sendo em termos de segurança, facilidades, manutenção e tecnologias envolvidas. Estes requisitos dizem respeito a como as funcionalidades serão entregues ao usuário do software.
 
-> Otimização e compatilibidade com dispositivos de baixo hardware.
+> Otimização e compatibilidade com dispositivos de baixo hardware.
 
 Mínimos:
 
@@ -82,7 +82,7 @@ Memória Ram: 1 GB
 
 Armazenamento: 200MB
 
-Acesso a Internet
+Acesso à Internet
 
 ## História de Usuário :mega:
 

@@ -119,7 +119,6 @@ Posso Cadastrar, Visualizar, Alterar, Excluir Produtos Comercializáveis
 Posso Cadastrar, Visualizar, Alterar, Excluir Alunos		 
 > Para adicionar alunos no sistema, realizar consultas aos dados, editar os dados caso surja necessidade, e remover alunos que já não fazem mais parte da matriz local
 
-A base de dados que você criou possui diversas tabelas com relacionamentos entre elas, que modelam informações relacionadas a **usuários**, **alunos**, **matrículas**, **produtos**, **aulas**, e outros. Vou explicar brevemente sobre as tabelas e os tipos de dados utilizados, justificando como eles funcionam em um contexto de aplicação.
 
 ## Descrição do banco de dados em modelo Físico
 

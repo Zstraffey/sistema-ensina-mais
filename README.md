@@ -119,3 +119,72 @@ Posso Cadastrar, Visualizar, Alterar, Excluir Produtos Comercializáveis
 Posso Cadastrar, Visualizar, Alterar, Excluir Alunos		 
 > Para adicionar alunos no sistema, realizar consultas aos dados, editar os dados caso surja necessidade, e remover alunos que já não fazem mais parte da matriz local
 
+A base de dados que você criou possui diversas tabelas com relacionamentos entre elas, que modelam informações relacionadas a **usuários**, **alunos**, **matrículas**, **produtos**, **aulas**, e outros. Vou explicar brevemente sobre as tabelas e os tipos de dados utilizados, justificando como eles funcionam em um contexto de aplicação.
+
+## Descrição do banco de dados em modelo Físico
+
+### 1. **Tabelas de Entidade Principal**
+   Essas tabelas representam as entidades principais da aplicação, como `Usuario`, `Aluno`, `Responsavel`, `Matricula`, etc. Vou abordar como os tipos de dados estão configurados para cada uma.
+
+   #### **Tabela: `Usuario`**
+   - **Campos principais**: `userId`, `codFunc`, `senha`, `nome`, `email`, `cpf`, `rg`, etc.
+   - **Tipos de dados**:
+     - **`INT` (Auto-increment)**: Para o `userId`, que é uma chave primária, usamos o tipo `INT` com a opção `AUTO_INCREMENT`. Isso garante que o sistema gerará automaticamente um identificador único para cada usuário.
+     - **`VARCHAR`**: O tipo `VARCHAR` é utilizado para campos de texto como `codFunc`, `nome`, `senha`, `email`, etc. Esse tipo é ideal para armazenar texto com comprimento variável. Por exemplo, `nome` é limitado a 50 caracteres, enquanto `email` pode ter até 100 caracteres.
+     - **`DATE`**: Usado para a data de nascimento (`data_nasc`). Este tipo de dado armazena uma data no formato 'YYYY-MM-DD'.
+     - **`FLOAT`**: Usado para valores numéricos que podem ter casas decimais, como o campo `pagamento` (provavelmente referente ao salário do usuário ou comissão).
+     - **`TEXT`**: Para campos de maior volume de texto, como `pfp`, que pode armazenar uma URL ou descrição da foto do perfil.
+
+   A tabela `Usuario` contém informações essenciais sobre os usuários da plataforma, incluindo identificação, permissões e dados pessoais. O uso de `VARCHAR` e `TEXT` permite flexibilidade no armazenamento de informações textuais, enquanto `DATE` e `FLOAT` são apropriados para tipos de dados mais específicos.
+
+   #### **Tabela: `Aluno`**
+   - **Campos principais**: `alunoId`, `nome`, `data_nasc`, `rg`, `data_mat`, etc.
+   - **Tipos de dados**:
+     - **`INT` (Auto-increment)**: Assim como na tabela `Usuario`, o `alunoId` é uma chave primária com `AUTO_INCREMENT`.
+     - **`VARCHAR`**: Para armazenar informações textuais como o `nome` do aluno e o `rg`.
+     - **`DATE`**: Para armazenar datas de nascimento (`data_nasc`) e matrícula (`data_mat`).
+
+   A tabela `Aluno` armazena dados sobre os estudantes. O uso de `DATE` para datas e `VARCHAR` para dados textuais segue a mesma lógica da tabela `Usuario`.
+
+### 2. **Relacionamentos Entre as Tabelas**
+   As tabelas de relacionamento são usadas para vincular dados de diferentes tabelas. Elas geralmente utilizam chaves estrangeiras (`FOREIGN KEY`), que garantem a integridade referencial entre as tabelas.
+
+   #### **Tabela: `matUsuario`**
+   - **Campos principais**: `fk_Usuario_userId`, `fk_Matricula_matId`
+   - **Tipos de dados**:
+     - **`INT`**: A tabela `matUsuario` conecta a tabela `Usuario` com a tabela `Matricula`. Ambas as chaves estrangeiras (`fk_Usuario_userId` e `fk_Matricula_matId`) são do tipo `INT` e se referem a chaves primárias em outras tabelas.
+   
+  A tabela `matUsuario` serve para registrar a relação entre um usuário e uma matrícula. Ela utiliza o tipo `INT` para as chaves estrangeiras, que são associadas a identificadores exclusivos de outras tabelas (no caso, `Usuario` e `Matricula`).
+
+   #### **Tabela: `respAluno`**
+   - **Campos principais**: `fk_Aluno_alunoId`, `fk_Responsavel_respId`
+   - **Tipos de dados**:
+     - **`INT`**: As chaves estrangeiras `fk_Aluno_alunoId` e `fk_Responsavel_respId` são do tipo `INT`, referenciando respectivamente as tabelas `Aluno` e `Responsavel`.
+   
+  A tabela `respAluno` estabelece um relacionamento entre alunos e seus responsáveis. Ao usar `INT` para as chaves estrangeiras, o banco de dados mantém a integridade dos dados e permite que um aluno possa ter um ou mais responsáveis cadastrados.
+
+   #### **Tabela: `cadastraProduto`**
+   - **Campos principais**: `fk_Usuario_userId`, `fk_Produtos_prodId`
+   - **Tipos de dados**:
+     - **`INT`**: A tabela `cadastraProduto` usa chaves estrangeiras `fk_Usuario_userId` e `fk_Produtos_prodId` para associar usuários a produtos cadastrados.
+   
+  A tabela `cadastraProduto` relaciona usuários (provavelmente administradores ou vendedores) a produtos que foram registrados na plataforma. O uso de `INT` para as chaves estrangeiras segue o padrão de criação de vínculos entre tabelas.
+
+### 3. **Aulas e Matrículas**
+   As tabelas `Aulas` e `Matricula` têm um papel central no gerenciamento de cursos e aulas, e os tipos de dados são usados de forma a refletir o conteúdo dessas atividades.
+
+   #### **Tabela: `Aulas`**
+   - **Campos principais**: `aulaId`, `data_aula`, `horario`, `curso`, `tema`, `prof1`, `prof2`
+   - **Tipos de dados**:
+     - **`INT`**: Para a chave primária `aulaId`, que é auto-incrementada.
+     - **`DATE` e `TIME`**: Usados para armazenar a data da aula (`data_aula`) e o horário (`horario`), respectivamente.
+     - **`VARCHAR`**: Para armazenar o nome do curso e o tema da aula, ambos como textos curtos.
+   
+  As aulas têm datas e horários definidos, portanto, `DATE` e `TIME` são os tipos de dados ideais para essas informações. `VARCHAR` é adequado para armazenar o nome do curso e o tema, que podem variar em tamanho.
+
+### 4. **Definição de Relacionamentos e Integridade Referencial**
+   O uso de **chaves estrangeiras** (`FOREIGN KEY`) nas tabelas, como `FK_cadastraUsuario_1`, `FK_respAluno_1`, entre outras, assegura que as tabelas estejam interligadas de forma consistente.
+
+   - **Restrição de Exclusão (`ON DELETE RESTRICT`)**: Impede a exclusão de um registro em uma tabela se houver dados dependentes nas tabelas relacionadas. Exemplo: um aluno não pode ser excluído se houver uma matrícula associada a ele.
+   - **Exclusão em Cascata (`ON DELETE CASCADE`)**: Exclui automaticamente os registros dependentes quando o registro principal é excluído. Exemplo: quando um usuário é removido, todas as suas relações em `cadastraUsuario` também serão excluídas.
+   - **Definir como Nulo (`ON DELETE SET NULL`)**: Quando a entidade relacionada é excluída, o campo correspondente na tabela de relacionamento é configurado para `NULL`. Exemplo: se uma matrícula for removida, o campo `fk_Matricula_matId` na tabela `matUsuario` é definido como `NULL`.

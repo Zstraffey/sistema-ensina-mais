@@ -10,14 +10,17 @@ using System.Windows.Forms;
 
 namespace Projeto_Ensina_Mais
 {
-    public partial class Form1 : Form
+    public partial class tela_inicial_secretaria : Form
     {
-        public Form1()
+        public tela_inicial_secretaria()
         {
             InitializeComponent();
+        }
 
-            tela_inicial_secretaria tela_inicial_teste = new tela_inicial_secretaria();
-            tela_inicial_teste.Show();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AlunoCadastrar cadAluno = new AlunoCadastrar();
+            cadAluno.Show();
         }
     }
 }

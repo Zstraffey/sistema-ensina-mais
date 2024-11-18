@@ -1,0 +1,14 @@
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.AssemblyReference.cache
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoCadastrar.resources
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Form1.resources
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Properties.Resources.resources
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.tela_inicial_secretaria.resources
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.GenerateResource.cache
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.CoreCompileInputs.cache
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe.config
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.pdb
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\bin\Debug\MySql.Data.xml
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto .A2834C23.Up2Date
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
+C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb

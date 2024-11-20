@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace Projeto_Ensina_Mais
         public AlunoCadastrar()
         {
             InitializeComponent();
+
+            dateTimePicker3.CustomFormat = "'hh:mm'";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,6 +38,10 @@ namespace Projeto_Ensina_Mais
             string cpf_responsavel = maskedTextBox2.Text;
             string contato_resp_1 = maskedTextBox3.Text;
             string contato_resp_2 = maskedTextBox4.Text;
+            string curso = textBox5.Text;
+            string valor = textBox6.Text.Replace("R$", "").Replace(",", ".").Trim();
+            string hora = dateTimePicker3.Text;
+
 
             caminhoNoServidor = caminhoNoServidor.Replace(@"\", "+");
 
@@ -44,27 +51,131 @@ namespace Projeto_Ensina_Mais
 
             // Shiiiuuu grita baixo nengue, eu sei que tá feio mas funciona, melhor assim do que fazer cod no banco
 
+            // Insere no Aluno
+
             string inserir = "INSERT INTO aluno(pfp, nome, data_nasc, rg, data_mat) values('" + caminhoNoServidor + "','" + nome + "','" + data_nasc + "','" + rg + "','" + data_mat + "');";
             MySqlCommand comandos = new MySqlCommand(inserir, conexao);
+
+            // Insere no Responsavel
 
             string inserir2 = "INSERT INTO responsavel(nome1, email1, cpf1, tel1, tel2) values('" + nome_responsavel + "','" + email_responsavel + "','" + cpf_responsavel + "','" + contato_resp_1 + "','" + contato_resp_2 + "');";
             MySqlCommand comandos2 = new MySqlCommand(inserir2, conexao);
 
+            // Insere na Matricula
+
+            string inserir3 = "INSERT INTO matricula(data_mat, hora, curso, valor) values('" + data_mat + "','" + hora + "','" + curso + "','" + valor + "');";
+            MySqlCommand comandos3 = new MySqlCommand(inserir3, conexao);
+
             comandos.ExecuteNonQuery();
 
             comandos2.ExecuteNonQuery();
+
+            comandos3.ExecuteNonQuery();
+
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;";
+
+            string id_responsavel = "";
+            string id_aluno = "";
+            string id_matricula = "";
+
+            try
+            {
+                using (var conexao1 = new MySqlConnection(cmdconexao))
+                {
+                    conexao1.Open();
+
+                    // Obter id_responsavel
+                    string pegaid = "SELECT respId FROM responsavel WHERE responsavel.nome1 = @nome_responsavel";
+                    using (var cmd = new MySqlCommand(pegaid, conexao1))
+                    {
+                        cmd.Parameters.AddWithValue("@nome_responsavel", nome_responsavel);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                id_responsavel = reader["respId"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nenhum responsável encontrado para o nome: " + nome_responsavel);
+                            }
+                        }
+                    }
+
+                    // Obter id_aluno
+                    string pegaid2 = "SELECT alunoId FROM aluno WHERE aluno.nome = @nome";
+                    using (var cmd = new MySqlCommand(pegaid2, conexao1))
+                    {
+                        cmd.Parameters.AddWithValue("@nome", nome);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                id_aluno = reader["alunoId"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nenhum aluno encontrado para o nome: " + nome);
+                            }
+                        }
+                    }
+
+                    // Obter id_matricula
+                    string pegaid3 = "SELECT matId FROM matricula WHERE matricula.hora = @hora";
+                    using (var cmd = new MySqlCommand(pegaid3, conexao1))
+                    {
+                        cmd.Parameters.AddWithValue("@hora", hora);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                id_matricula = reader["matId"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nenhuma matrícula encontrada para a hora: " + hora);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+            MessageBox.Show("Id do aluno: " + id_aluno + " Id do Responsável " + id_responsavel + " Id da matrícula " + id_matricula);
+
+            // Cadastrando relação de responsável / aluno
+
+            string inserir4 = "INSERT INTO respaluno(fk_Aluno_alunoId, fk_Responsavel_respId) values('" + id_aluno + "','" + id_responsavel + "');";
+            MySqlCommand comandos4 = new MySqlCommand(inserir4, conexao);
+
+            // Cadastrando relação de aluno / matricula
+
+            string inserir5 = "INSERT INTO mat_aluno(fk_Aluno_alunoId, fk_Matricula_matId) values('" + id_aluno + "','" + id_matricula + "');";
+            MySqlCommand comandos5 = new MySqlCommand(inserir5, conexao);
+
+            comandos4.ExecuteNonQuery();
+            
+            comandos5.ExecuteNonQuery();
 
             conexao.Close(); //fechando a conexão com o banco de dados
 
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
+            textBox5.Text = "";
+            textBox6.Text = "";
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
             maskedTextBox3.Text = "";
             maskedTextBox4.Text = "";
             dateTimePicker1.Text = "";
             dateTimePicker2.Text = "";
+            dateTimePicker3.Text = DateTime.Now.ToString("HH:mm:ss");
             pictureBox1.Image = null;
 
             MessageBox.Show("Aluno cadastrado com Sucesso!!!");

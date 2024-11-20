@@ -15,12 +15,15 @@ namespace Projeto_Ensina_Mais
         public tela_inicial_secretaria()
         {
             InitializeComponent();
+
+            AlunoCadastrar alunoCad = new AlunoCadastrar();
+            alunoCad.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AlunoCadastrar cadAluno = new AlunoCadastrar();
-            cadAluno.Show();
+            AlunoEditar alunoEdit = new AlunoEditar();
+            alunoEdit.Show();
         }
     }
 }

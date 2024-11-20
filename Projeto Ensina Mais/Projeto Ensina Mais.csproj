@@ -53,6 +53,12 @@
     <Compile Include="AlunoCadastrar.Designer.cs">
       <DependentUpon>AlunoCadastrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="AlunoEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlunoEditar.Designer.cs">
+      <DependentUpon>AlunoEditar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     </Compile>
     <EmbeddedResource Include="AlunoCadastrar.resx">
       <DependentUpon>AlunoCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlunoEditar.resx">
+      <DependentUpon>AlunoEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

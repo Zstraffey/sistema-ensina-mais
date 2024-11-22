@@ -67,11 +67,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tela_inicial_secretaria.cs">
+    <Compile Include="tela_inicial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="tela_inicial_secretaria.Designer.cs">
-      <DependentUpon>tela_inicial_secretaria.cs</DependentUpon>
+    <Compile Include="tela_inicial.Designer.cs">
+      <DependentUpon>tela_inicial.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AlunoCadastrar.resx">
       <DependentUpon>AlunoCadastrar.cs</DependentUpon>
@@ -91,8 +91,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="tela_inicial_secretaria.resx">
-      <DependentUpon>tela_inicial_secretaria.cs</DependentUpon>
+    <EmbeddedResource Include="tela_inicial.resx">
+      <DependentUpon>tela_inicial.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

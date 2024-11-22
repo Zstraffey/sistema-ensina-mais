@@ -13,31 +13,34 @@ namespace Projeto_Ensina_Mais
     public partial class tela_inicial : Form
     {
         private string permissao;
-        public tela_inicial(string permissao, string permissao2)
+        public tela_inicial(string permissao)
         {
             InitializeComponent();
             this.permissao = permissao;
+            
             {
-                // Exibe a permissão na tela inicial ou utiliza para ajustar o comportamento da aplicação
-                MessageBox.Show("Bem-vindo(a)");
-
-                // Ajuste o comportamento da aplicação conforme a permissão
+      
                 if (permissao == "pro")
                 {
-                    
+                    label1.Text = "Menu Professor";
+                    button4.Visible = true;
                 }
                 else if (permissao == "sec")
                 {
-                   
+                    label1.Text = "Menu Secretaria";
+                    button1.Visible = true;
+                    button2.Visible = true;
                 }
                 else if (permissao == "adm")
                 {
-                    
-
+                    label1.Text = "Menu Admnistrador";
+                    button1.Visible = true;
+                    button2.Visible = true;
+                    button3.Visible = true;
+                    button4.Visible = true;
                 }
             }
 
-            label1.Text = permissao2;
         }
 
         private void button1_Click(object sender, EventArgs e)

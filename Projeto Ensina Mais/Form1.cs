@@ -25,51 +25,57 @@ namespace Projeto_Ensina_Mais
             string connString = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;";
             MySqlConnection conn = new MySqlConnection(connString);
             conn.Open();
+            string codFunc = textBox1.Text;
+            string senha = textBox2.Text;
 
-            using (conn)
-            {
-                try
+            
+                using (conn)
                 {
-                    
-
-                    // Query SQL para verificar os campos
-                    string query = "SELECT COUNT(*) FROM usuario WHERE codFunc = @codFunc AND senha = @senha";
-
-                    string query2 = "SELECT permissao FROM usuario WHERE codFunc = @codFunc AND senha = @senha";
-
-                    MySqlCommand comando = new MySqlCommand(query2, conn);
-
-                    string permissao2 = Convert.ToString(comando.ExecuteNonQuery());
-
-                    using (MySqlCommand command = new MySqlCommand(query, conn))
+                    try
                     {
-                        // Adiciona parâmetros para evitar SQL Injection
-                        command.Parameters.AddWithValue("@codFunc", textBox1.Text);
-                        command.Parameters.AddWithValue("@senha", textBox2.Text);
+                      
 
-                        // Executa a consulta
-                        int result = Convert.ToInt32(command.ExecuteScalar());
+                        // Query SQL para verificar os campos e obter a permissão
+                        string query = "SELECT permissao FROM usuario WHERE codFunc = @codFunc AND senha = @senha";
 
-                        if (result != null)
+                        using (MySqlCommand command = new MySqlCommand(query, conn))
                         {
-                            string permissao = result.ToString();
+                            // Adiciona parâmetros para evitar SQL Injection
+                            command.Parameters.AddWithValue("@codFunc", codFunc);
+                            command.Parameters.AddWithValue("@senha", senha);
 
-                            // Verifica o tipo de permissão e abre a janela apropriada
-                            tela_inicial telaInicial = new tela_inicial(permissao, permissao2);
-                            telaInicial.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Usuário ou senha incorretos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // Executa a consulta e obtém a permissão
+                            object result = command.ExecuteScalar();
+
+                            if (result != null)
+                            {
+                                string permissao = result.ToString().Trim();
+
+                                // Valida se a permissão é de 3 caracteres
+                                if (permissao.Length == 3 && (permissao == "pro" || permissao == "sec" || permissao == "adm"))
+                                {
+                                    // Abre a tela inicial e passa a permissão
+                                    tela_inicial telaInicial = new tela_inicial(permissao);
+                                    telaInicial.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Permissão inválida no banco de dados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Usuário ou senha incorretos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao conectar ao banco de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao conectar ao banco de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
-    }
-}
+        }
+ 

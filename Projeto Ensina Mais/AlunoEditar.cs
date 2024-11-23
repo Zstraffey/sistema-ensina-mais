@@ -13,10 +13,15 @@ namespace Projeto_Ensina_Mais
 {
     public partial class AlunoEditar : Form
     {
-        public AlunoEditar()
+
+        public string permissao;
+        public AlunoEditar(string permissao)
         {
             InitializeComponent();
 
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+
+            this.permissao = permissao;
 
             // Conectando no Banco de Dados
             string cmdconexao = "SERVER=localhost;DATABASE=escola;UID=root;PASSWORD =; Allow Zero Datetime=True;Convert Zero Datetime=True;";
@@ -56,7 +61,11 @@ namespace Projeto_Ensina_Mais
 
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aluno";
+            consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp," +
+                "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2 " +
+                "FROM aluno, responsavel, respaluno " +
+                "WHERE respaluno.fk_Aluno_alunoId = aluno.alunoId AND " +
+                "respaluno.fk_Responsavel_respId = responsavel.respId;";
 
             // Operando com o dataGridView
 
@@ -74,6 +83,7 @@ namespace Projeto_Ensina_Mais
                     resultado["data_nasc"].ToString(),
                     resultado["rg"].ToString(),
                     resultado["data_mat"].ToString(),
+                    resultado["pfp"].ToString(),
                     resultado["respId"].ToString(),
                     resultado["nome1"].ToString(),
                     resultado["email1"].ToString(),
@@ -93,25 +103,113 @@ namespace Projeto_Ensina_Mais
 
             }
 
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.HeaderText = "Editar";
-            btn.Text = "Editar";
-            btn.Name = "btnAlterar";
-            btn.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns.Add(btn);
-
-            DataGridViewButtonColumn btn2 = new DataGridViewButtonColumn();
-            btn2.HeaderText = "Excluir";
-            btn2.Text = "Excluir";
-            btn2.Name = "btnExcluir";
-            btn2.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns.Add(btn2);
-
             conexao.Close();
         }
 
         private void AlunoEditar_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AlunoCadastrar cadAluno = new AlunoCadastrar(permissao);
+            cadAluno.Show();
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            tela_inicial tela_inicial = new tela_inicial(permissao);
+            tela_inicial.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            string campo = Convert.ToString(comboBox1.Text);
+
+            string nomecampo = Convert.ToString(textBox1.Text);
+
+            if (nomecampo == "" || campo == "")
+            {
+
+                MessageBox.Show("Preencha o campo e sua informação para realizar a filtragem.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else
+            {
+
+                // Conectando no Banco de Dados
+
+                MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
+                conexao.Open();
+
+                // Filtragem
+
+                MySqlCommand consulta = new MySqlCommand();
+                consulta.Connection = conexao;
+                consulta.CommandText = "";
+
+                if (campo == "alunoId" || campo == "nome" || campo == "data_nasc" || campo == "rg" || campo == "data_mat" || campo == "pfp")
+                {
+
+                    consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp," +
+                        "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2 " +
+                        "FROM aluno, responsavel, respaluno " +
+                        "WHERE respaluno.fk_Aluno_alunoId = aluno.alunoId AND " +
+                        "respaluno.fk_Responsavel_respId = responsavel.respId AND aluno." + campo + " like '%" + nomecampo + "%'";
+
+                }
+
+                else if (campo == "respId" || campo == "nome1" || campo == "email1" || campo == "cpf1" || campo == "tel1" || campo == "tel2")
+                {
+
+                    consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp," +
+                       "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2 " +
+                       "FROM aluno, responsavel, respaluno " +
+                       "WHERE respaluno.fk_Aluno_alunoId = aluno.alunoId AND " +
+                       "respaluno.fk_Responsavel_respId = responsavel.respId AND responsavel." + campo + " like '%" + nomecampo + "%'";
+
+                }
+
+                dataGridView1.Rows.Clear();
+
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                if (resultado.HasRows)
+                {
+                    while (resultado.Read())
+                    {
+
+                        dataGridView1.Rows.Add(resultado["alunoId"].ToString(),
+                        resultado["nome"].ToString(),
+                        resultado["data_nasc"].ToString(),
+                        resultado["rg"].ToString(),
+                        resultado["data_mat"].ToString(),
+                        resultado["pfp"].ToString(),
+                        resultado["respId"].ToString(),
+                        resultado["nome1"].ToString(),
+                        resultado["email1"].ToString(),
+                        resultado["cpf1"].ToString(),
+                        resultado["tel1"].ToString(),
+                        resultado["tel2"].ToString()
+                        );
+
+                    }
+
+                }
+
+                else
+                {
+
+                    MessageBox.Show("Nenhum registro foi encontrado");
+
+                }
+
+                conexao.Close();
+
+            }
 
         }
     }

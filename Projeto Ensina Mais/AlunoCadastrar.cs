@@ -16,21 +16,25 @@ namespace Projeto_Ensina_Mais
 {
     public partial class AlunoCadastrar : Form
     {
+        public string permissao;
         string caminhoNoServidor;
         string nomeArquivo;
 
-        public AlunoCadastrar()
+        public AlunoCadastrar(string permissao)
         {
             InitializeComponent();
+            this.permissao = permissao;
 
             dateTimePicker3.CustomFormat = "'hh:mm'";
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+        
             string nome = textBox1.Text;
-            string data_nasc = dateTimePicker1.Text;
+            string data_nasc_errado = dateTimePicker1.Text;
             string rg = maskedTextBox1.Text;
             string data_mat = dateTimePicker2.Text;
             string nome_responsavel = textBox2.Text;
@@ -42,6 +46,8 @@ namespace Projeto_Ensina_Mais
             string valor = textBox6.Text.Replace("R$", "").Replace(",", ".").Trim();
             string hora = dateTimePicker3.Text;
 
+            DateTime dataConvertida = DateTime.ParseExact(data_nasc_errado, "dd/MM/yyyy", null);
+            string data_nasc = dataConvertida.ToString("yyyy-MM-dd");
 
             caminhoNoServidor = caminhoNoServidor.Replace(@"\", "+");
 
@@ -146,7 +152,6 @@ namespace Projeto_Ensina_Mais
             {
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
-            MessageBox.Show("Id do aluno: " + id_aluno + " Id do Responsável " + id_responsavel + " Id da matrícula " + id_matricula);
 
             // Cadastrando relação de responsável / aluno
 
@@ -210,6 +215,13 @@ namespace Projeto_Ensina_Mais
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            tela_inicial tela_inicial = new tela_inicial(permissao);
+            tela_inicial.Show();
+            this.Close();
         }
     }
 }

@@ -44,3 +44,19 @@ D:\internet.info\Desktop\Projeto Ensina Mais\Projeto Ensina Mais\bin\Debug\MySql
 D:\internet.info\Desktop\Projeto Ensina Mais\Projeto Ensina Mais\bin\Debug\Google.Protobuf.dll
 D:\internet.info\Desktop\Projeto Ensina Mais\Projeto Ensina Mais\bin\Debug\MySql.Data.xml
 D:\internet.info\Desktop\Projeto Ensina Mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.CopyComplete
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe.config
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.pdb
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Google.Protobuf.dll
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\MySql.Data.xml
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.AssemblyReference.cache
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoCadastrar.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoEditar.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Form1.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Properties.Resources.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.tela_inicial.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.GenerateResource.cache
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.CoreCompileInputs.cache
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto .A2834C23.Up2Date
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb

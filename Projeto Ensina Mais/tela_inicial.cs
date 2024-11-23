@@ -12,7 +12,7 @@ namespace Projeto_Ensina_Mais
 {
     public partial class tela_inicial : Form
     {
-        private string permissao;
+        public string permissao;
         public tela_inicial(string permissao)
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Projeto_Ensina_Mais
                 }
                 else if (permissao == "adm")
                 {
-                    label1.Text = "Menu Admnistrador";
+                    label1.Text = "Menu Administrador";
                     button1.Visible = true;
                     button2.Visible = true;
                     button3.Visible = true;
@@ -45,8 +45,9 @@ namespace Projeto_Ensina_Mais
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AlunoEditar alunoEdit = new AlunoEditar();
+            AlunoEditar alunoEdit = new AlunoEditar(permissao);
             alunoEdit.Show();
+            this.Close();
         }
 
         

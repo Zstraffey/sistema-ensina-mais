@@ -1,8 +1,8 @@
 CREATE TABLE responsavel (
     respId INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
     nome1 VARCHAR(50) NOT NULL,
-    email1 VARCHAR(100) NOT NULL,
-    cpf1 VARCHAR(11) NOT NULL,
+    email1 VARCHAR(250) NOT NULL,
+    cpf1 VARCHAR(15) NOT NULL,
     tel1 VARCHAR(20),
     tel2 VARCHAR(20)
 );
@@ -27,7 +27,7 @@ CREATE TABLE aluno (
     alunoId INT NOT NULL  AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     data_nasc DATE NOT NULL,
-    rg VARCHAR(9),
+    rg VARCHAR(13),
     data_mat DATE,
     pfp TEXT
 );

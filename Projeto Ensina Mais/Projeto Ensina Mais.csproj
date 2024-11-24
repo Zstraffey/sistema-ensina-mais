@@ -53,6 +53,35 @@
     <Compile Include="AlunoAlterar.Designer.cs">
       <DependentUpon>AlunoAlterar.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="formCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCadastro.Designer.cs">
+      <DependentUpon>formCadastro.cs</DependentUpon>
+    </Compile>
+
+    <Compile Include="formADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formADM.Designer.cs">
+      <DependentUpon>formADM.cs</DependentUpon>
+    </Compile>
+
+    <Compile Include="formVisualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formVisualizar.Designer.cs">
+      <DependentUpon>formVisualizar.cs</DependentUpon>
+    </Compile>
+
+    <Compile Include="formAlterar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formAlterar.Designer.cs">
+      <DependentUpon>formAlterar.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="AlunoCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>

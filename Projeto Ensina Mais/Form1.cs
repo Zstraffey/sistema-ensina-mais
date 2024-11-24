@@ -27,9 +27,7 @@ namespace Projeto_Ensina_Mais
             conn.Open();
             string codFunc = textBox1.Text;
             string senha = textBox2.Text;
-
-            // Pegando o id do usuário, para fazer o cadastro na relação de matrícula e usuário por ex na hora da matrícula
-
+        
             string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;";
 
             string id_usuario = "";
@@ -40,7 +38,7 @@ namespace Projeto_Ensina_Mais
                 {
                     conexao1.Open();
 
-                    // Obter id_responsavel
+                    
                     string pegaid = "SELECT usuario.userId FROM usuario WHERE usuario.codFunc = @codFunc;";
                     using (var cmd = new MySqlCommand(pegaid, conexao1))
                     {
@@ -54,7 +52,7 @@ namespace Projeto_Ensina_Mais
                             }
                             else
                             {
-                                MessageBox.Show("Nenhum responsável encontrado para o nome: " + codFunc);
+                                MessageBox.Show("Nenhum usuário encontrado para o código: " + codFunc);
                             }
                         }
                     }
@@ -73,26 +71,26 @@ namespace Projeto_Ensina_Mais
                     {
                       
 
-                        // Query SQL para verificar os campos e obter a permissão
+                        
                         string query = "SELECT permissao FROM usuario WHERE codFunc = @codFunc AND senha = @senha";
 
                         using (MySqlCommand command = new MySqlCommand(query, conn))
                         {
-                            // Adiciona parâmetros para evitar SQL Injection
+                            
                             command.Parameters.AddWithValue("@codFunc", codFunc);
                             command.Parameters.AddWithValue("@senha", senha);
 
-                            // Executa a consulta e obtém a permissão
+                            
                             object result = command.ExecuteScalar();
 
                             if (result != null)
                             {
                                 string permissao = result.ToString().Trim();
 
-                                // Valida se a permissão é de 3 caracteres
+                                
                                 if (permissao.Length == 3 && (permissao == "pro" || permissao == "sec" || permissao == "adm"))
                                 {
-                                    // Abre a tela inicial e passa a permissão
+                                    
                                     tela_inicial telaInicial = new tela_inicial(permissao, id_usuario);
                                     telaInicial.Show();
                                     this.Hide();

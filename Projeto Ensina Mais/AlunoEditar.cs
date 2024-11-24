@@ -26,7 +26,7 @@ namespace Projeto_Ensina_Mais
             this.permissao = permissao;
 
             // Conectando no Banco de Dados
-            string cmdconexao = "SERVER=localhost;DATABASE=escola;UID=root;PASSWORD =; Allow Zero Datetime=True;Convert Zero Datetime=True;";
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =; Allow Zero Datetime=True;Convert Zero Datetime=True;";
 
             MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
             conexao.Open();

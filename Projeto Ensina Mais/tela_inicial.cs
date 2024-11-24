@@ -61,7 +61,9 @@ namespace Projeto_Ensina_Mais
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            AulaEditar aulaEdit = new AulaEditar(permissao, id_usuario);
+            aulaEdit.Show();
+            this.Close();
         }
     }
 }

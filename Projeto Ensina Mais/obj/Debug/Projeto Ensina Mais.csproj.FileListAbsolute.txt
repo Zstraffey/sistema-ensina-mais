@@ -81,3 +81,5 @@ C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\projeto ensina mais\Proj
 C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\projeto ensina mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
 C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\projeto ensina mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb
 C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\projeto ensina mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaEditar.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaEditar.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoExcluir.resources

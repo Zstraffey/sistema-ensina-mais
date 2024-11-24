@@ -14,6 +14,12 @@ namespace Projeto_Ensina_Mais
     public partial class AulaEditar : Form
     {
         public string permissao, id_usuario;
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public AulaEditar(string permissao, string id_usuario)
         {
             InitializeComponent();

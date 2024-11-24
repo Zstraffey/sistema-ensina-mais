@@ -213,9 +213,6 @@ namespace Projeto_Ensina_Mais
                 nomeArquivo = Path.GetFileName(caminhoDaImagem);
                 caminhoNoServidor = Path.Combine(pastaDestino, nomeArquivo);
 
-                MessageBox.Show(nomeArquivo);
-                MessageBox.Show(caminhoNoServidor);
-
                 try
                 {
                     File.Copy(caminhoDaImagem, caminhoNoServidor);

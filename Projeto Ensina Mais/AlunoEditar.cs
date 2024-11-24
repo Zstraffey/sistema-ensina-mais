@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Projeto_Ensina_Mais
 {
@@ -163,6 +164,16 @@ namespace Projeto_Ensina_Mais
 
             AlunoAlterar altAluno = new AlunoAlterar(permissao, id_usuario, id_aluno);
             altAluno.Show();
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string id_aluno = textBox2.Text;
+
+            AlunoExcluir delAluno = new AlunoExcluir(permissao, id_usuario, id_aluno);
+            delAluno.Show();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

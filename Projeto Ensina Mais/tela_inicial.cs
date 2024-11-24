@@ -12,11 +12,13 @@ namespace Projeto_Ensina_Mais
 {
     public partial class tela_inicial : Form
     {
-        public string permissao;
-        public tela_inicial(string permissao)
+        public string permissao, id_usuario;
+
+        public tela_inicial(string permissao, string id_usuario)
         {
             InitializeComponent();
             this.permissao = permissao;
+            this.id_usuario = id_usuario;
             
             {
       
@@ -45,7 +47,7 @@ namespace Projeto_Ensina_Mais
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AlunoEditar alunoEdit = new AlunoEditar(permissao);
+            AlunoEditar alunoEdit = new AlunoEditar(permissao, id_usuario);
             alunoEdit.Show();
             this.Close();
         }

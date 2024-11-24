@@ -28,8 +28,46 @@ namespace Projeto_Ensina_Mais
             string codFunc = textBox1.Text;
             string senha = textBox2.Text;
 
-            
-                using (conn)
+            // Pegando o id do usuário, para fazer o cadastro na relação de matrícula e usuário por ex na hora da matrícula
+
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;";
+
+            string id_usuario = "";
+
+            try
+            {
+                using (var conexao1 = new MySqlConnection(cmdconexao))
+                {
+                    conexao1.Open();
+
+                    // Obter id_responsavel
+                    string pegaid = "SELECT usuario.userId FROM usuario WHERE usuario.codFunc = @codFunc;";
+                    using (var cmd = new MySqlCommand(pegaid, conexao1))
+                    {
+                        cmd.Parameters.AddWithValue("@codFunc", codFunc);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                id_usuario = reader["userId"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nenhum responsável encontrado para o nome: " + codFunc);
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+
+
+            using (conn)
                 {
                     try
                     {
@@ -55,7 +93,7 @@ namespace Projeto_Ensina_Mais
                                 if (permissao.Length == 3 && (permissao == "pro" || permissao == "sec" || permissao == "adm"))
                                 {
                                     // Abre a tela inicial e passa a permissão
-                                    tela_inicial telaInicial = new tela_inicial(permissao);
+                                    tela_inicial telaInicial = new tela_inicial(permissao, id_usuario);
                                     telaInicial.Show();
                                     this.Hide();
                                 }

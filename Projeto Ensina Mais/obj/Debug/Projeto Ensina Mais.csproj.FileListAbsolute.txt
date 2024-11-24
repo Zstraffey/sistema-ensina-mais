@@ -60,3 +60,5 @@ C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina
 C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto .A2834C23.Up2Date
 C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
 C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb
+C:\Users\Familia Costa\source\repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.ResolveComReference.cache
+C:\Users\Familia Costa\source\repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoAlterar.resources

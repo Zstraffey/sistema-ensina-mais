@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlunoAlterar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlunoAlterar.Designer.cs">
+      <DependentUpon>AlunoAlterar.cs</DependentUpon>
+    </Compile>
     <Compile Include="AlunoCadastrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,12 @@
     </Compile>
     <Compile Include="AlunoEditar.Designer.cs">
       <DependentUpon>AlunoEditar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlunoExcluir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlunoExcluir.Designer.cs">
+      <DependentUpon>AlunoExcluir.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -73,6 +85,9 @@
     <Compile Include="tela_inicial.Designer.cs">
       <DependentUpon>tela_inicial.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AlunoAlterar.resx">
+      <DependentUpon>AlunoAlterar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AlunoCadastrar.resx">
       <DependentUpon>AlunoCadastrar.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +121,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

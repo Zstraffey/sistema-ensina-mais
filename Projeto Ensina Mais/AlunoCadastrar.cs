@@ -16,17 +16,18 @@ namespace Projeto_Ensina_Mais
 {
     public partial class AlunoCadastrar : Form
     {
-        public string permissao;
+        public string permissao, id_usuario;
         string caminhoNoServidor;
         string nomeArquivo;
 
-        public AlunoCadastrar(string permissao)
+        public AlunoCadastrar(string permissao, string id_usuario)
         {
             InitializeComponent();
             this.permissao = permissao;
 
             dateTimePicker3.CustomFormat = "'hh:mm'";
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            this.id_usuario = id_usuario;
 
         }
 
@@ -36,7 +37,7 @@ namespace Projeto_Ensina_Mais
             string nome = textBox1.Text;
             string data_nasc_errado = dateTimePicker1.Text;
             string rg = maskedTextBox1.Text;
-            string data_mat = dateTimePicker2.Text;
+            string data_mat_errado = dateTimePicker2.Text;
             string nome_responsavel = textBox2.Text;
             string email_responsavel = textBox3.Text;
             string cpf_responsavel = maskedTextBox2.Text;
@@ -48,6 +49,9 @@ namespace Projeto_Ensina_Mais
 
             DateTime dataConvertida = DateTime.ParseExact(data_nasc_errado, "dd/MM/yyyy", null);
             string data_nasc = dataConvertida.ToString("yyyy-MM-dd");
+
+            DateTime dataConvertida2 = DateTime.ParseExact(data_mat_errado, "dd/MM/yyyy", null);
+            string data_mat = dataConvertida2.ToString("yyyy-MM-dd");
 
             caminhoNoServidor = caminhoNoServidor.Replace(@"\", "+");
 
@@ -163,9 +167,16 @@ namespace Projeto_Ensina_Mais
             string inserir5 = "INSERT INTO mat_aluno(fk_Aluno_alunoId, fk_Matricula_matId) values('" + id_aluno + "','" + id_matricula + "');";
             MySqlCommand comandos5 = new MySqlCommand(inserir5, conexao);
 
+            // Cadastrando a relação usuário / matrícula (usuário que realizou o cadastro)
+
+            string inserir6 = "INSERT INTO mat_usuario(fk_Usuario_userId, fk_Matricula_matId) values('" + id_usuario + "','" + id_matricula + "');";
+            MySqlCommand comandos6 = new MySqlCommand(inserir6, conexao);
+
             comandos4.ExecuteNonQuery();
-            
+
             comandos5.ExecuteNonQuery();
+
+            comandos6.ExecuteNonQuery();
 
             conexao.Close(); //fechando a conexão com o banco de dados
 
@@ -197,9 +208,13 @@ namespace Projeto_Ensina_Mais
             {
                 string caminhoDaImagem = openFileDialog.FileName;
 
-                string pastaDestino = @"C:\Users\Familia Costa\Desktop\Projeto Ensina Mais\Imagens";
+                string pastaDestino = @"C:\Users\Familia Costa\source\repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\Imagens\alunos\";
+
                 nomeArquivo = Path.GetFileName(caminhoDaImagem);
                 caminhoNoServidor = Path.Combine(pastaDestino, nomeArquivo);
+
+                MessageBox.Show(nomeArquivo);
+                MessageBox.Show(caminhoNoServidor);
 
                 try
                 {
@@ -219,7 +234,7 @@ namespace Projeto_Ensina_Mais
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            tela_inicial tela_inicial = new tela_inicial(permissao);
+            tela_inicial tela_inicial = new tela_inicial(permissao, id_usuario);
             tela_inicial.Show();
             this.Close();
         }

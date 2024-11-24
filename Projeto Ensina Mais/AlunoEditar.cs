@@ -14,10 +14,12 @@ namespace Projeto_Ensina_Mais
     public partial class AlunoEditar : Form
     {
 
-        public string permissao;
-        public AlunoEditar(string permissao)
+        public string permissao, id_usuario;
+        public AlunoEditar(string permissao, string id_usuario)
         {
             InitializeComponent();
+
+            this.id_usuario = id_usuario;
 
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
 
@@ -106,6 +108,8 @@ namespace Projeto_Ensina_Mais
             conexao.Close();
         }
 
+        Microsoft.Office.Interop.Excel.Application XcellApp = new Microsoft.Office.Interop.Excel.Application();
+
         private void AlunoEditar_Load(object sender, EventArgs e)
         {
 
@@ -113,16 +117,52 @@ namespace Projeto_Ensina_Mais
 
         private void button4_Click(object sender, EventArgs e)
         {
-            AlunoCadastrar cadAluno = new AlunoCadastrar(permissao);
+            AlunoCadastrar cadAluno = new AlunoCadastrar(permissao, id_usuario);
             cadAluno.Show();
             this.Close();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            tela_inicial tela_inicial = new tela_inicial(permissao);
+            tela_inicial tela_inicial = new tela_inicial(permissao, id_usuario);
             tela_inicial.Show();
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                XcellApp.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                {
+                    XcellApp.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                }
+
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    {
+                        XcellApp.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
+                XcellApp.Columns.AutoFit();
+                XcellApp.Visible = true;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string id_aluno = textBox2.Text;
+
+            AlunoAlterar altAluno = new AlunoAlterar(permissao, id_usuario, id_aluno);
+            altAluno.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

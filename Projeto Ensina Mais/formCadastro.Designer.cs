@@ -56,7 +56,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.BackgroundImage = global::OOP_Teste.Properties.Resources._93634_removebg_preview;
+            //this.button5.BackgroundImage = global::OOP_Teste.Properties.Resources._93634_removebg_preview;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.Transparent;

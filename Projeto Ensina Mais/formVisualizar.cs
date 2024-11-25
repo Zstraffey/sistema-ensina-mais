@@ -71,7 +71,7 @@ namespace OOP_Teste
 
             consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM "+tipo;
+            consulta.CommandText = "SELECT * FROM " + tipo;
 
             dataGridView1.Rows.Clear();
             resultado = consulta.ExecuteReader();
@@ -129,12 +129,12 @@ namespace OOP_Teste
                     //}
 
                     y = 0;
-                    foreach (var item in campos) 
+                    foreach (var item in campos)
                     {
                         row.Cells[item].Value = resultado[y].ToString();
                         y += 1;
                     }
-                   
+
                 }
             }
             else
@@ -157,7 +157,7 @@ namespace OOP_Teste
             {
                 conexao.Open();
 
-                string comandoSQL = "SELECT "+acharFoto+" FROM " + tipo + " WHERE " + Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString()) + " = "+acharId;
+                string comandoSQL = "SELECT " + acharFoto + " FROM " + tipo + " WHERE " + Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString()) + " = " + acharId;
 
                 using (MySqlCommand comando = new MySqlCommand(comandoSQL, conexao))
                 {
@@ -201,7 +201,6 @@ namespace OOP_Teste
                 if (e.ColumnIndex == dataGridView1.Columns["Excluir Dados"].Index)
                 {
                     DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
                     DialogResult dialogResult = MessageBox.Show("Você quer mesmo apagar estes dados?", "Exclusão", MessageBoxButtons.YesNo);
 
                     if (dialogResult == DialogResult.Yes)
@@ -212,7 +211,7 @@ namespace OOP_Teste
 
                         MySqlCommand consulta = new MySqlCommand();
                         consulta.Connection = conexao;
-                        consulta.CommandText = "DELETE FROM "+tipo +" WHERE "+tipo+"."+acharId+" = " + row.Cells[0].Value.ToString();
+                        consulta.CommandText = "DELETE FROM " + tipo + " WHERE " + tipo + "." + acharId + " = " + row.Cells[0].Value.ToString();
                         MySqlDataReader resultado = consulta.ExecuteReader();
 
                         conexao.Close();

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using OOP_Teste;
 
 namespace Projeto_Ensina_Mais
 {
@@ -16,8 +17,6 @@ namespace Projeto_Ensina_Mais
         public Form1()
         {
             InitializeComponent();
-
-           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,6 +111,11 @@ namespace Projeto_Ensina_Mais
                     }
                 }
             }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
+    }
         }
  

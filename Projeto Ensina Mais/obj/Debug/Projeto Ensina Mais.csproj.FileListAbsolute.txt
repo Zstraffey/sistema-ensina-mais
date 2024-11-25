@@ -83,3 +83,24 @@ C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\projeto ensina mais\Proj
 C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\projeto ensina mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaEditar.resources
 C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaEditar.resources
 C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoExcluir.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.AssemblyReference.cache
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.ResolveComReference.cache
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoAlterar.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoCadastrar.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoEditar.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoExcluir.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaEditar.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Form1.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\OOP_Teste.formADM.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Properties.Resources.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.tela_inicial.resources
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.GenerateResource.cache
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.CoreCompileInputs.cache
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe.config
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.pdb
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Google.Protobuf.dll
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\MySql.Data.xml
+C:\Users\Usuário\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto .A2834C23.Up2Date

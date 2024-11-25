@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOP_Teste;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,12 +15,14 @@ namespace Projeto_Ensina_Mais
     {
         public string permissao, id_usuario;
 
+       
+
         public tela_inicial(string permissao, string id_usuario)
         {
             InitializeComponent();
             this.permissao = permissao;
             this.id_usuario = id_usuario;
-            
+
             {
       
                 if (permissao == "pro")
@@ -56,7 +59,14 @@ namespace Projeto_Ensina_Mais
 
         private void button3_Click(object sender, EventArgs e)
         {
+            formADM novoForm = new formADM();
+            novoForm.Show();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            formADM novoForm = new formADM();
+            novoForm.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

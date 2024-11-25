@@ -39,7 +39,7 @@ namespace OOP_Teste
             consulta.CommandText = "SELECT column_name FROM information_schema.columns WHERE table_name = '"+tipo+"' AND table_schema = 'ensina_mais';";
 
             MySqlDataReader resultado = consulta.ExecuteReader();
-            int y = tipo != "usuário" ? -1 : -2;
+            int y = -1;
 
             while (resultado.Read())
             {
@@ -60,9 +60,9 @@ namespace OOP_Teste
 
             while (resultado.Read())
             {
-                if (y > (tipo != "usuário" ? 0 : 1))
+                if (y > 0)
                 {
-                    campos[y-(tipo != "usuário" ? 1 : 2)] = resultado[0].ToString();
+                    campos[y-1] = resultado[0].ToString();
                 }
                 
                 y += 1;
@@ -80,9 +80,9 @@ namespace OOP_Teste
 
             while (resultado.Read())
             {
-                if (y > (tipo != "usuário" ? 0 : 1))
+                if (y > 0)
                 {
-                    tipos[y - (tipo != "usuário" ? 1 : 2)] = resultado[0].ToString();
+                    tipos[y-1] = resultado[0].ToString();
                     //MessageBox.Show(resultado[0].ToString());
                 }
                 y += 1;

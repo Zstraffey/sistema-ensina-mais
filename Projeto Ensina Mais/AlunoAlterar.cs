@@ -68,7 +68,8 @@ namespace Projeto_Ensina_Mais
                 // alterar em aluno
 
                 alterar.Connection = conexao;
-                alterar.CommandText = "UPDATE aluno SET aluno.nome = '" + nome + "', aluno.data_nasc = '" + data_nasc + "', aluno.rg = '" + rg + "', aluno.data_mat = '" + data_mat + "', aluno.pfp = '" + caminhoNoServidor + "' WHERE aluno.alunoId = " + id_aluno;
+                alterar.CommandText = "UPDATE aluno SET aluno.nome = '" + nome + "', aluno.data_nasc = '" + data_nasc + "'," +
+                    " aluno.rg = '" + rg + "', aluno.data_mat = '" + data_mat + "', aluno.pfp = '" + caminhoNoServidor + "' WHERE aluno.alunoId = " + id_aluno;
                 MySqlDataReader resultado = alterar.ExecuteReader();
 
                 // alterar em responsável

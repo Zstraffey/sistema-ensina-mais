@@ -47,6 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AulaAlterar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaAlterar.Designer.cs">
+      <DependentUpon>AulaAlterar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaCadastrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaCadastrar.Designer.cs">
+      <DependentUpon>AulaCadastrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AulaExcluir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AulaExcluir.Designer.cs">
+      <DependentUpon>AulaExcluir.cs</DependentUpon>
+    </Compile>
     <Compile Include="caixaTexto.cs" />
     <Compile Include="AlunoAlterar.cs">
       <SubType>Form</SubType>
@@ -128,8 +146,17 @@
     <EmbeddedResource Include="AlunoExcluir.resx">
       <DependentUpon>AlunoExcluir.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AulaAlterar.resx">
+      <DependentUpon>AulaAlterar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaCadastrar.resx">
+      <DependentUpon>AulaCadastrar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AulaEditar.resx">
       <DependentUpon>AulaEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AulaExcluir.resx">
+      <DependentUpon>AulaExcluir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -66,6 +66,7 @@
             this.button5.TabIndex = 66;
             this.button5.Text = "Excluir";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button3
             // 
@@ -104,6 +105,7 @@
             this.button4.TabIndex = 62;
             this.button4.Text = "Adicionar Nova Aula";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label4
             // 
@@ -124,6 +126,7 @@
             this.button2.TabIndex = 60;
             this.button2.Text = "Exportar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -134,6 +137,7 @@
             this.button1.TabIndex = 59;
             this.button1.Text = "Filtrar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 

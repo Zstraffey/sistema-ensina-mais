@@ -169,7 +169,7 @@ namespace Projeto_Ensina_Mais
 
             // Cadastrando a relação usuário / matrícula (usuário que realizou o cadastro)
 
-            string inserir6 = "INSERT INTO mat_usuario(fk_Usuario_userId, fk_Matricula_matId) values('" + id_usuario + "','" + id_matricula + "');";
+            string inserir6 = "INSERT INTO matusuario(fk_Usuario_userId, fk_Matricula_matId) values('" + id_usuario + "','" + id_matricula + "');";
             MySqlCommand comandos6 = new MySqlCommand(inserir6, conexao);
 
             comandos4.ExecuteNonQuery();

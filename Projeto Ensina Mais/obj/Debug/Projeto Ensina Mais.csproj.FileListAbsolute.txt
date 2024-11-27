@@ -115,7 +115,6 @@ D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Proje
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\MySql.Data.dll
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Google.Protobuf.dll
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\MySql.Data.xml
-D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csprojAssemblyReference.cache
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.ResolveComReference.cache
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoAlterar.resources
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoCadastrar.resources
@@ -133,3 +132,5 @@ D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Proje
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.CopyComplete
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
 D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.AssemblyReference.cache
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.CoreCompileInputs.cache

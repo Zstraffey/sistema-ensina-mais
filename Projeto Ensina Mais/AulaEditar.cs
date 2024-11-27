@@ -213,6 +213,53 @@ namespace Projeto_Ensina_Mais
             this.Close();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
+            conexao.Open();
+
+            comboBox1.Text = "";
+            textBox1.Text = "";
+
+            dataGridView1.Rows.Clear();
+
+            MySqlCommand consulta = new MySqlCommand();
+            consulta.Connection = conexao;
+            consulta.CommandText = "SELECT * FROM aulas";
+
+            dataGridView1.Rows.Clear();
+
+            MySqlDataReader resultado = consulta.ExecuteReader();
+            if (resultado.HasRows)
+
+            {
+                while (resultado.Read())
+                {
+
+                    dataGridView1.Rows.Add(resultado["aulaId"].ToString(),
+                        resultado["data_aula"].ToString(),
+                        resultado["horario"].ToString(),
+                        resultado["curso"].ToString(),
+                        resultado["tema"].ToString(),
+                        resultado["numero_aula"].ToString(),
+                        resultado["prof1"].ToString(),
+                        resultado["prof2"].ToString()
+                        );
+
+                }
+
+            }
+
+            else
+            {
+
+                MessageBox.Show("Nenhum registro foi encontrado");
+
+            }
+
+            conexao.Close();
+        }
+
         Microsoft.Office.Interop.Excel.Application XcellApp = new Microsoft.Office.Interop.Excel.Application();
 
     }

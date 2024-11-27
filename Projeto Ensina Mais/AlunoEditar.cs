@@ -176,6 +176,63 @@ namespace Projeto_Ensina_Mais
             this.Close();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
+            conexao.Open();
+
+            comboBox1.Text = "";
+            textBox1.Text = "";
+
+            dataGridView1.Rows.Clear();
+            
+            MySqlCommand consulta = new MySqlCommand();
+            consulta.Connection = conexao;
+            consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp," +
+                "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2 " +
+                "FROM aluno, responsavel, respaluno " +
+                "WHERE respaluno.fk_Aluno_alunoId = aluno.alunoId AND " +
+                "respaluno.fk_Responsavel_respId = responsavel.respId;";
+            
+
+            dataGridView1.Rows.Clear();
+
+            MySqlDataReader resultado = consulta.ExecuteReader();
+            if (resultado.HasRows)
+
+            {
+                while (resultado.Read())
+                {
+
+                    dataGridView1.Rows.Add(resultado["alunoId"].ToString(),
+                    resultado["nome"].ToString(),
+                    resultado["data_nasc"].ToString(),
+                    resultado["rg"].ToString(),
+                    resultado["data_mat"].ToString(),
+                    resultado["pfp"].ToString(),
+                    resultado["respId"].ToString(),
+                    resultado["nome1"].ToString(),
+                    resultado["email1"].ToString(),
+                    resultado["cpf1"].ToString(),
+                    resultado["tel1"].ToString(),
+                    resultado["tel2"].ToString()
+                    );
+
+                }
+
+            }
+
+            else
+            {
+
+                MessageBox.Show("Nenhum registro foi encontrado");
+
+            }
+
+            conexao.Close();
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 

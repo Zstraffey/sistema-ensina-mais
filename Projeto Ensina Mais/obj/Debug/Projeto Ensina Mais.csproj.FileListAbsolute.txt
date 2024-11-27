@@ -109,3 +109,27 @@ C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\Projeto Ensina Mais\Proj
 C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\Projeto Ensina Mais\Projeto Ensina Mais\obj\Debug\OOP_Teste.formADM.resources
 C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\Projeto Ensina Mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaAlterar.resources
 C:\Users\dougm\OneDrive\Área de Trabalho\arquivos etec\Projeto Ensina Mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaExcluir.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe.config
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.exe
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Projeto Ensina Mais.pdb
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\MySql.Data.dll
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\Google.Protobuf.dll
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\bin\Debug\MySql.Data.xml
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csprojAssemblyReference.cache
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.ResolveComReference.cache
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoAlterar.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoCadastrar.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoEditar.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AlunoExcluir.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaAlterar.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaCadastrar.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaEditar.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaExcluir.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Form1.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\OOP_Teste.formADM.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.Properties.Resources.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.tela_inicial.resources
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.GenerateResource.cache
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.csproj.CopyComplete
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
+D:\internet.info\Desktop\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb

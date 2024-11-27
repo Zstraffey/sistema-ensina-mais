@@ -60,6 +60,23 @@ namespace Projeto_Ensina_Mais
 
             comandos.ExecuteNonQuery();
 
+            string id_aula = "";
+
+            string pegaid = "SELECT LAST_INSERT_ID();"; 
+            using (var cmd = new MySqlCommand(pegaid, conexao))
+            {
+                id_aula = cmd.ExecuteScalar().ToString(); 
+            }
+
+            string inserir2 = "INSERT INTO cadastroaula(FK_usuario_userId, FK_aula_aulaId) " +
+                      "VALUES(@id_usuario, @id_aula);";
+            MySqlCommand comandos2 = new MySqlCommand(inserir2, conexao);
+            comandos2.Parameters.AddWithValue("@id_usuario", id_usuario);
+            comandos2.Parameters.AddWithValue("@id_aula", id_aula);
+
+            comandos2.ExecuteNonQuery();
+
+
             dateTimePicker1.Text = "";
             dateTimePicker3.Text = "";
             comboBox1.Text = "";

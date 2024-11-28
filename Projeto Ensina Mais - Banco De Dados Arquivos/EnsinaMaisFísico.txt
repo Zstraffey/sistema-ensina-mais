@@ -1,7 +1,7 @@
-/* Lógico_1: */
+/* EnsinaMaisLógico: */
 
 CREATE TABLE responsavel (
-    respId INTEGER AUTO INCREMENT PRIMARY KEY,
+    respId INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     nome1 VARCHAR(250),
     email1 VARCHAR(250),
     cpf1 VARCHAR(20),
@@ -10,7 +10,7 @@ CREATE TABLE responsavel (
 );
 
 CREATE TABLE aluno (
-    alunoId INTEGER AUTO INCREMENT PRIMARY KEY,
+    alunoId INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(250),
     data_nasc DATE,
     rg VARCHAR(20),
@@ -19,7 +19,7 @@ CREATE TABLE aluno (
 );
 
 CREATE TABLE matricula (
-    matId INTEGER AUTO INCREMENT PRIMARY KEY,
+    matId INTEGER AUTO_INCREMENT PRIMARY KEY,
     data_mat DATE,
     hora TIME,
     valor FLOAT,
@@ -29,7 +29,7 @@ CREATE TABLE matricula (
 );
 
 CREATE TABLE usuario (
-    userId INTEGER AUTO INCREMENT PRIMARY KEY,
+    userId INTEGER AUTO_INCREMENT PRIMARY KEY,
     codFunc VARCHAR(20),
     nome VARCHAR(250),
     rg VARCHAR(20),
@@ -44,7 +44,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE aula (
-    aulaId INTEGER AUTO INCREMENT PRIMARY KEY,
+    aulaId INTEGER AUTO_INCREMENT PRIMARY KEY,
     data_aula DATE,
     horario TIME,
     tema VARCHAR(500),
@@ -56,9 +56,9 @@ CREATE TABLE aula (
 );
 
 CREATE TABLE produto (
-    prodId INTEGER AUTO INCREMENT PRIMARY KEY,
+    prodId INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(250),
-    desc VARCHAR(500),
+    `desc` VARCHAR(500),
     preco FLOAT,
     qtd INT,
     data_aq DATE,
@@ -67,7 +67,7 @@ CREATE TABLE produto (
 );
 
 CREATE TABLE curso (
-    cursoId INTEGER AUTO INCREMENT PRIMARY KEY,
+    cursoId INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(200)
 );
 

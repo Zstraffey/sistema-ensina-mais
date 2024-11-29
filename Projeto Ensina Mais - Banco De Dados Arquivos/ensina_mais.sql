@@ -58,7 +58,7 @@ CREATE TABLE aula (
 CREATE TABLE produto (
     prodId INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(250),
-    descricao VARCHAR(500),
+    `desc` VARCHAR(500),
     preco FLOAT(10,2),
     qtd INT,
     data_aq DATE,

@@ -153,27 +153,31 @@ namespace OOP_Teste
 
             string acharFoto = tipo == "aluno" ? "pfp" : tipo == "usuário" ? "pfp" : "foto";
 
-            using (MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD="))
-            {
-                conexao.Open();
-
-                string comandoSQL = "SELECT " + acharFoto + " FROM " + tipo + " WHERE " + Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString()) + " = " + acharId;
-
-                using (MySqlCommand comando = new MySqlCommand(comandoSQL, conexao))
+            if (tipo != "curso") 
+            { 
+                using (MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD="))
                 {
-                    byte[] imagemBytes = (byte[])comando.ExecuteScalar();
+                    conexao.Open();
 
-                    if (imagemBytes != null)
+                    string comandoSQL = "SELECT " + acharFoto + " FROM " + tipo + " WHERE " + Convert.ToInt16(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value.ToString()) + " = " + acharId;
+
+                    using (MySqlCommand comando = new MySqlCommand(comandoSQL, conexao))
                     {
-                        Image imagem = ConverterBytesParaImagem(imagemBytes);
-                        pictureBox1.Image = imagem;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nenhuma imagem encontrada com o ID especificado.");
+                        byte[] imagemBytes = (byte[])comando.ExecuteScalar();
+
+                        if (imagemBytes != null)
+                        {
+                            Image imagem = ConverterBytesParaImagem(imagemBytes);
+                            pictureBox1.Image = imagem;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nenhuma imagem encontrada com o ID especificado.");
+                        }
                     }
                 }
             }
+
         }
 
         private void form_Closed(object sender, FormClosedEventArgs e)

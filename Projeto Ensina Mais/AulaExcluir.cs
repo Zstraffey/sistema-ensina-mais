@@ -31,7 +31,7 @@ namespace Projeto_Ensina_Mais
 
                 MySqlConnection conexao2 = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD = ; Allow Zero Datetime=True; Convert Zero Datetime=True;");
                 conexao2.Open();
-                string excluir = "DELETE FROM aulas WHERE aulaId = " + id_aula;
+                string excluir = "DELETE FROM aula WHERE aulaId = " + id_aula;
                 MySqlCommand comandos = new MySqlCommand(excluir, conexao2);
 
                 comandos.ExecuteNonQuery();
@@ -58,7 +58,7 @@ namespace Projeto_Ensina_Mais
 
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aulas WHERE aulaId = " + id_aula;
+            consulta.CommandText = "SELECT * FROM aula WHERE aulaId = " + id_aula;
 
 
             MySqlDataReader resultado = consulta.ExecuteReader();

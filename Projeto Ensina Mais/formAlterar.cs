@@ -23,7 +23,7 @@ namespace OOP_Teste
         string[] tipos = { };
         caixaTexto[] caixas = { };
 
-        string[] nomesAluno = { "Nome", "Data de Nascimento", "RG", "Data de Matrícula", "Foto de Perfil" };
+        string[] nomesAluno = { "Nome" };
         string[] nomesUsuario = { "Senha", "Permissão", "Nome", "Data de Nascimento", "Pagamento", "CPF", "RG", "Telefone", "Email", "Foto de Perfil" };
         string[] nomesProduto = { "Nome", "Descrição", "Preço", "Quantidade", "Data de Aquisição", "Foto do Produto" };
 
@@ -34,7 +34,7 @@ namespace OOP_Teste
             tipo = _tipo;
             id = _id;
 
-            string acharId = tipo == "aluno" ? "alunoId" : tipo == "usuário" ? "userId" : "prodId";
+            string acharId = tipo == "curso" ? "cursoId" : tipo == "usuário" ? "userId" : "prodId";
 
             label1.Text = "Alterar " + tipo + " (ID: "+_id+")";
 
@@ -160,7 +160,7 @@ namespace OOP_Teste
 
                     string nome;
 
-                    if (tipo == "aluno")
+                    if (tipo == "curso")
                     {
                         nome = nomesAluno[x - 1];
                     }
@@ -192,7 +192,7 @@ namespace OOP_Teste
         {
 
             string acharFoto = tipo == "aluno" ? "pfp" : tipo == "usuário" ? "pfp" : "foto";
-            string acharId = tipo == "aluno" ? "alunoId" : tipo == "usuário" ? "userId" : "prodId";
+            string acharId = tipo == "curso" ? "cursoId" : tipo == "usuário" ? "userId" : "prodId";
             string comando = "UPDATE " + tipo.ToLower() + " SET ";
 
             byte[] conversaoBytes = null;
@@ -221,7 +221,19 @@ namespace OOP_Teste
                 
             }
 
+            
             comando += " WHERE " + tipo + "." + acharId + " = " + id;
+
+            if (tipo == "curso") 
+            {
+                int indexOf = -1;
+                indexOf = comando.IndexOf(',', 0, comando.Length);
+                MessageBox.Show(indexOf.ToString());
+
+                comando.Remove(indexOf-1, 1);
+            }
+
+            MessageBox.Show(comando);
 
             //MessageBox.Show(comando);
 

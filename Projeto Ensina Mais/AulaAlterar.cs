@@ -32,7 +32,7 @@ namespace Projeto_Ensina_Mais
 
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aulas WHERE aulaId = " + id_aula;
+            consulta.CommandText = "SELECT * FROM aula WHERE aulaId = " + id_aula;
 
 
             MySqlDataReader resultado = consulta.ExecuteReader();
@@ -92,8 +92,8 @@ namespace Projeto_Ensina_Mais
 
                 MySqlConnection conexao2 = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD = ; Allow Zero Datetime=True; Convert Zero Datetime=True;");
                 conexao2.Open();
-                string alterar = "UPDATE aulas SET aulas.data_aula = '" + data_aula + "', aulas.horario = '" + hora_aula + "'," +
-                        " aulas.curso = '" + curso + "', aulas.tema = '" + tema + "', aulas.prof1 = '" + prof1 + "', aulas.prof2 = '" + prof2 + "' WHERE aulas.aulaId = " + id_aula;
+                string alterar = "UPDATE aula SET aula.data_aula = '" + data_aula + "', aula.horario = '" + hora_aula + "'," +
+                        " aula.curso = '" + curso + "', aula.tema = '" + tema + "', aula.prof1 = '" + prof1 + "', aula.prof2 = '" + prof2 + "' WHERE aula.aulaId = " + id_aula;
                 MySqlCommand comandos = new MySqlCommand(alterar, conexao2);
 
                 comandos.ExecuteNonQuery();

@@ -40,7 +40,7 @@ namespace Projeto_Ensina_Mais
             MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
             conexao.Open();
 
-            string comando = @" SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'ensina_mais' AND TABLE_NAME IN ('aulas');";
+            string comando = @" SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'ensina_mais' AND TABLE_NAME IN ('aula');";
 
             dataGridView1.Columns.Clear();
 
@@ -72,7 +72,7 @@ namespace Projeto_Ensina_Mais
 
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aulas";
+            consulta.CommandText = "SELECT * FROM aula";
 
             // Operando com o dataGridView
 
@@ -167,7 +167,7 @@ namespace Projeto_Ensina_Mais
 
                 
 
-                    consulta.CommandText = "SELECT * FROM aulas WHERE aulas." + campo + " like '%" + nomecampo + "%'";
+                    consulta.CommandText = "SELECT * FROM aula WHERE aula." + campo + " like '%" + nomecampo + "%'";
 
 
                 dataGridView1.Rows.Clear();
@@ -225,7 +225,7 @@ namespace Projeto_Ensina_Mais
 
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aulas";
+            consulta.CommandText = "SELECT * FROM aula";
 
             dataGridView1.Rows.Clear();
 

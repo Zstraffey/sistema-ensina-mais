@@ -20,7 +20,7 @@ namespace OOP_Teste
         string[] tipos = { };
         caixaTexto[] caixas = { };
 
-        string[] nomesAluno = { "Nome", "Data de Nascimento", "RG", "Data de Matrícula", "Foto de Perfil" };
+        string[] nomesAluno = { "Nome" };
         string[] nomesUsuario = { "Senha", "Permissão", "Nome", "Data de Nascimento", "Pagamento", "CPF", "RG", "Telefone", "Email", "Foto de Perfil" };
         string[] nomesProduto = { "Nome", "Descrição", "Preço", "Quantidade", "Data de Aquisição", "Foto do Produto" };
 
@@ -133,7 +133,7 @@ namespace OOP_Teste
 
                 string nome;
 
-                if (tipo == "aluno")
+                if (tipo == "curso")
                 {
                     nome = nomesAluno[x];
                 }

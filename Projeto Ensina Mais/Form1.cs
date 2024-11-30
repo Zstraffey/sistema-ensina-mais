@@ -69,8 +69,6 @@ namespace Projeto_Ensina_Mais
                     try
                     {
                       
-
-                        
                         string query = "SELECT permissao FROM usuario WHERE codFunc = @codFunc AND senha = @senha";
 
                         using (MySqlCommand command = new MySqlCommand(query, conn))

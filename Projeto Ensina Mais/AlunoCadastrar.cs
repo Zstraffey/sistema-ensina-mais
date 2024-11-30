@@ -23,11 +23,41 @@ namespace Projeto_Ensina_Mais
         public AlunoCadastrar(string permissao, string id_usuario)
         {
             InitializeComponent();
+
             this.permissao = permissao;
 
             dateTimePicker3.CustomFormat = "'hh:mm'";
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             this.id_usuario = id_usuario;
+
+
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;";
+
+            string comando = @"SELECT nome FROM curso";
+
+            try
+            {
+                using (var conexao2 = new MySqlConnection(cmdconexao))
+                {
+                    conexao2.Open();
+                    MySqlCommand cmd = new MySqlCommand(comando, conexao2);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string nomeDaColuna = reader["nome"].ToString();
+                        comboBox1.Items.Add(nomeDaColuna);
+                    }
+
+                    reader.Close();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+
 
         }
 
@@ -43,9 +73,9 @@ namespace Projeto_Ensina_Mais
             string cpf_responsavel = maskedTextBox2.Text;
             string contato_resp_1 = maskedTextBox3.Text;
             string contato_resp_2 = maskedTextBox4.Text;
-            string curso = textBox5.Text;
             string valor = textBox6.Text.Replace("R$", "").Replace(",", ".").Trim();
             string hora = dateTimePicker3.Text;
+            string curso = comboBox1.Text;
 
             DateTime dataConvertida = DateTime.ParseExact(data_nasc_errado, "dd/MM/yyyy", null);
             string data_nasc = dataConvertida.ToString("yyyy-MM-dd");
@@ -59,8 +89,6 @@ namespace Projeto_Ensina_Mais
             conexao.ConnectionString = ("SERVER=127.0.0.1; DATABASE=ensina_mais; UID= root ; PASSWORD = ; ");//indica o caminho e dados do banco
             conexao.Open();//abrindo o banco
 
-            // Shiiiuuu grita baixo nengue, eu sei que tá feio mas funciona, melhor assim do que fazer cod no banco
-
             // Insere no Aluno
 
             string inserir = "INSERT INTO aluno(pfp, nome, data_nasc, rg, data_mat) values('" + caminhoNoServidor + "','" + nome + "','" + data_nasc + "','" + rg + "','" + data_mat + "');";
@@ -71,22 +99,15 @@ namespace Projeto_Ensina_Mais
             string inserir2 = "INSERT INTO responsavel(nome1, email1, cpf1, tel1, tel2) values('" + nome_responsavel + "','" + email_responsavel + "','" + cpf_responsavel + "','" + contato_resp_1 + "','" + contato_resp_2 + "');";
             MySqlCommand comandos2 = new MySqlCommand(inserir2, conexao);
 
-            // Insere na Matricula
-
-            string inserir3 = "INSERT INTO matricula(data_mat, hora, curso, valor) values('" + data_mat + "','" + hora + "','" + curso + "','" + valor + "');";
-            MySqlCommand comandos3 = new MySqlCommand(inserir3, conexao);
-
-            comandos.ExecuteNonQuery();
-
-            comandos2.ExecuteNonQuery();
-
-            comandos3.ExecuteNonQuery();
-
             string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;";
 
             string id_responsavel = "";
             string id_aluno = "";
-            string id_matricula = "";
+            string id_curso = "";
+
+            comandos.ExecuteNonQuery();
+
+            comandos2.ExecuteNonQuery();
 
             try
             {
@@ -132,21 +153,19 @@ namespace Projeto_Ensina_Mais
                         }
                     }
 
-                    // Obter id_matricula
-                    string pegaid3 = "SELECT matId FROM matricula WHERE matricula.hora = @hora";
+                    string pegaid3 = "SELECT cursoId FROM curso WHERE curso.nome LIKE '%"+ curso +"%'";
                     using (var cmd = new MySqlCommand(pegaid3, conexao1))
                     {
-                        cmd.Parameters.AddWithValue("@hora", hora);
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
                                 reader.Read();
-                                id_matricula = reader["matId"].ToString();
+                                id_curso = reader["cursoId"].ToString();
                             }
                             else
                             {
-                                MessageBox.Show("Nenhuma matrícula encontrada para a hora: " + hora);
+                                MessageBox.Show("Nenhum curso encontrada para o curso: " + curso);
                             }
                         }
                     }
@@ -162,28 +181,20 @@ namespace Projeto_Ensina_Mais
             string inserir4 = "INSERT INTO respaluno(fk_Aluno_alunoId, fk_Responsavel_respId) values('" + id_aluno + "','" + id_responsavel + "');";
             MySqlCommand comandos4 = new MySqlCommand(inserir4, conexao);
 
-            // Cadastrando relação de aluno / matricula
-
-            string inserir5 = "INSERT INTO mat_aluno(fk_Aluno_alunoId, fk_Matricula_matId) values('" + id_aluno + "','" + id_matricula + "');";
-            MySqlCommand comandos5 = new MySqlCommand(inserir5, conexao);
-
-            // Cadastrando a relação usuário / matrícula (usuário que realizou o cadastro)
-
-            string inserir6 = "INSERT INTO matusuario(fk_Usuario_userId, fk_Matricula_matId) values('" + id_usuario + "','" + id_matricula + "');";
-            MySqlCommand comandos6 = new MySqlCommand(inserir6, conexao);
-
             comandos4.ExecuteNonQuery();
 
-            comandos5.ExecuteNonQuery();
+            // Insere na Matricula
 
-            comandos6.ExecuteNonQuery();
+            string inserir3 = "INSERT INTO matricula(data_mat, hora, valor, FK_aluno_alunoId, FK_usuario_userId, FK_curso_cursoId) values('" + data_mat + "','" + hora + "','" + valor + "'," + id_aluno + "," + id_usuario + "," + id_curso + ");";
+            MySqlCommand comandos3 = new MySqlCommand(inserir3, conexao);
+
+            comandos3.ExecuteNonQuery();
 
             conexao.Close(); //fechando a conexão com o banco de dados
 
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
-            textBox5.Text = "";
             textBox6.Text = "";
             maskedTextBox1.Text = "";
             maskedTextBox2.Text = "";
@@ -191,6 +202,7 @@ namespace Projeto_Ensina_Mais
             maskedTextBox4.Text = "";
             dateTimePicker1.Text = "";
             dateTimePicker2.Text = "";
+            comboBox1.Text = "";
             dateTimePicker3.Text = DateTime.Now.ToString("HH:mm:ss");
             pictureBox1.Image = null;
 

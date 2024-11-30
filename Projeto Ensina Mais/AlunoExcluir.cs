@@ -9,12 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Projeto_Ensina_Mais
 {
     public partial class AlunoExcluir : Form
     {
-        public string permissao, id_usuario, id_aluno, id_matricula, id_responsavel;
+        public string permissao, id_usuario, id_aluno, id_responsavel;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -51,24 +52,6 @@ namespace Projeto_Ensina_Mais
                             }
                         }
 
-                        // Obter id_matricula
-                        string pegaid3 = "SELECT matId FROM matricula WHERE matricula.hora = @hora";
-                        using (var cmd = new MySqlCommand(pegaid3, conexao1))
-                        {
-                            cmd.Parameters.AddWithValue("@hora", hora);
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    reader.Read();
-                                    id_matricula = reader["matId"].ToString();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Nenhuma matrícula encontrada para a hora: " + hora);
-                                }
-                            }
-                        }
                     }
                 }
                 catch (Exception ex)
@@ -83,12 +66,8 @@ namespace Projeto_Ensina_Mais
 
                 MySqlCommand deletar = new MySqlCommand();
                 deletar.Connection = conexao;
-                deletar.CommandText = "DELETE FROM mat_aluno WHERE mat_aluno.FK_aluno_alunoId = " + id_aluno + ";" +
-                    "\r\nDELETE FROM respaluno WHERE respaluno.FK_aluno_alunoId = " + id_aluno + ";" +
-                    "\r\nDELETE FROM mat_usuario WHERE mat_usuario.FK_matricula_matId = " + id_matricula + ";" +
-                    "\r\nDELETE FROM aluno WHERE aluno.alunoId = " + id_aluno + ";" +
-                    "\r\nDELETE FROM responsavel WHERE responsavel.respId = " + id_responsavel + ";" +
-                    "\r\nDELETE FROM matricula WHERE matricula.matId = " + id_matricula + "";
+                deletar.CommandText = "DELETE FROM aluno WHERE aluno.alunoId = " + id_aluno + ";" +
+                    "\r\nDELETE FROM responsavel WHERE responsavel.respId = " + id_responsavel + ";";
                 MySqlDataReader resultado = deletar.ExecuteReader();
                 conexao.Close();
 
@@ -153,6 +132,41 @@ namespace Projeto_Ensina_Mais
 
             // Conectando no Banco de Dados
 
+            MySqlConnection conexao4 = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD = ; Allow Zero Datetime=True; Convert Zero Datetime=True;");
+            conexao4.Open();
+
+            // Comando para Consultar
+
+            MySqlCommand consulta3 = new MySqlCommand();
+            consulta3.Connection = conexao4;
+            consulta3.CommandText = "SELECT curso.nome" +
+                "\r\nFROM curso" +
+                "\r\nINNER JOIN matricula ON matricula.FK_curso_cursoId = curso.cursoId" +
+                "\r\nINNER JOIN aluno ON matricula.FK_Aluno_alunoId = aluno.alunoId" +
+                "\r\nWHERE aluno.alunoId = " + id_aluno;
+
+            MySqlDataReader resultado4 = consulta3.ExecuteReader();
+            if (resultado4.HasRows)
+            {
+                while (resultado4.Read())
+                {
+                    textBox5.Text = resultado4["nome"].ToString();
+
+                }
+
+            }
+
+            else
+            {
+
+                MessageBox.Show("Nenhum registro foi encontrado");
+
+            }
+
+
+
+            // Conectando no Banco de Dados
+
             MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD = ; Allow Zero Datetime=True; Convert Zero Datetime=True;");
             conexao.Open();
 
@@ -162,12 +176,12 @@ namespace Projeto_Ensina_Mais
             consulta.Connection = conexao;
             consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp, " +
                 "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2, " +
-                "matricula.hora, matricula.curso, matricula.valor" +
+                "matricula.hora, matricula.valor" +
                 "\r\nFROM aluno" +
                 "\r\nINNER JOIN respaluno ON respaluno.fk_Aluno_alunoId = aluno.alunoId" +
                 "\r\nINNER JOIN responsavel ON respaluno.fk_Responsavel_respId = responsavel.respId" +
-                "\r\nINNER JOIN mat_aluno ON mat_aluno.fk_Aluno_alunoId = aluno.alunoId" +
-                "\r\nINNER JOIN matricula ON matricula.matId = mat_aluno.fk_Matricula_matId" +
+                "\r\nINNER JOIN matricula ON matricula.fk_Aluno_alunoId = aluno.alunoId" +
+                "\r\nINNER JOIN curso ON matricula.FK_curso_cursoId = curso.cursoId" +
                 "\r\nWHERE aluno.alunoId = " + id_aluno;
 
             MySqlDataReader resultado = consulta.ExecuteReader();
@@ -186,7 +200,6 @@ namespace Projeto_Ensina_Mais
                     textBox10.Text = resultado["tel1"].ToString();
                     textBox11.Text = resultado["tel2"].ToString();
                     textBox12.Text = resultado["hora"].ToString();
-                    textBox5.Text = resultado["curso"].ToString();
                     textBox6.Text = resultado["valor"].ToString();
                 }
 

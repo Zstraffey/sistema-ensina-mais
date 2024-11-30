@@ -30,7 +30,6 @@ namespace Projeto_Ensina_Mais
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             this.id_usuario = id_usuario;
 
-
             string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;";
 
             string comando = @"SELECT nome FROM curso";

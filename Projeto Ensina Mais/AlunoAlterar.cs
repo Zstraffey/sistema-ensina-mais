@@ -15,18 +15,49 @@ namespace Projeto_Ensina_Mais
 {
     public partial class AlunoAlterar : Form
     {
-        public string permissao, id_usuario, id_aluno, id_responsavel, id_matricula;
+        public string permissao, id_usuario, id_aluno, id_responsavel, id_matricula, id_curso;
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.gif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string caminhoDaImagem = openFileDialog.FileName;
+
+                string pastaDestino = @"C:\Users\Familia Costa\source\repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\Imagens\alunos\";
+
+                MessageBox.Show(nomeArquivo);
+                MessageBox.Show(caminhoNoServidor);
+
+                try
+                {
+                    File.Copy(caminhoDaImagem, caminhoNoServidor);
+                }
+                catch
+                {
+                    MessageBox.Show("Essa imagem já existe");
+                }
+
+                pictureBox1.Image = Image.FromFile(caminhoDaImagem);
+
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+            }
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
         {
             tela_inicial tela_inicial = new tela_inicial(permissao, id_usuario);
             tela_inicial.Show();
             this.Close();
+
         }
 
         string caminhoNoServidor, nomeArquivo;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             if (DialogResult.Yes == MessageBox.Show("Tem certeza que deseja alterar as informações?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
             {
@@ -39,9 +70,11 @@ namespace Projeto_Ensina_Mais
                 string cpf_responsavel = maskedTextBox2.Text;
                 string contato_resp_1 = maskedTextBox3.Text;
                 string contato_resp_2 = maskedTextBox4.Text;
-                string curso = textBox5.Text;
+                string curso = comboBox1.Text;
                 string valor = textBox6.Text.Replace("R$", "").Replace(",", ".").Trim();
                 string hora = dateTimePicker3.Text;
+
+
 
                 caminhoNoServidor = caminhoNoServidor.Replace(@"\", "+");
 
@@ -78,53 +111,56 @@ namespace Projeto_Ensina_Mais
                 alterar2.CommandText = "UPDATE responsavel SET responsavel.nome1 = '" + nome_responsavel + "', responsavel.email1 = '" + email_responsavel + "', responsavel.cpf1 = '" + cpf_responsavel + "', responsavel.tel1 = '" + contato_resp_1 + "', responsavel.tel2 = '" + contato_resp_2 + "' WHERE responsavel.respId = " + id_responsavel;
                 MySqlDataReader resultado2 = alterar2.ExecuteReader();
 
-                // alterar em matrícula
 
-                alterar3.Connection = conexao3;
-                alterar3.CommandText = "UPDATE matricula SET matricula.data_mat = '" + data_mat + "', matricula.hora = '" + hora + "', matricula.curso = '" + curso + "', matricula.valor = '" + valor + "' WHERE matricula.matId = " + id_matricula;
-                MySqlDataReader resultado3 = alterar3.ExecuteReader();
-
-                conexao.Close();
-                conexao2.Close();
-                conexao3.Close();
-
-                AlunoEditar alunoEdit = new AlunoEditar(permissao, id_usuario);
-                alunoEdit.Show();
-                this.Close();
-
-            }
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.gif";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string caminhoDaImagem = openFileDialog.FileName;
-
-                string pastaDestino = @"C:\Users\Familia Costa\source\repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\Imagens\alunos\";
-
-                MessageBox.Show(nomeArquivo);
-                MessageBox.Show(caminhoNoServidor);
+                string cmdconexao2 = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;";
 
                 try
                 {
-                    File.Copy(caminhoDaImagem, caminhoNoServidor);
+                    using (var conexao1 = new MySqlConnection(cmdconexao2))
+                    {
+                        conexao1.Open();
+
+                        string pegaid4 = "SELECT cursoId FROM curso WHERE curso.nome LIKE '%" + curso + "%'";
+                        using (var cmd = new MySqlCommand(pegaid4, conexao1))
+                        {
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    id_curso = reader["cursoId"].ToString();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Nenhum curso encontrada para o curso: " + curso);
+                                }
+                            }
+                        }
+
+                    }
                 }
-                catch
+
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Essa imagem já existe");
+                    MessageBox.Show("Ocorreu um erro: " + ex.Message);
                 }
 
-                pictureBox1.Image = Image.FromFile(caminhoDaImagem);
+                    // alterar em matrícula
 
-                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                    alterar3.Connection = conexao3;
+                    alterar3.CommandText = "UPDATE matricula SET matricula.data_mat = '" + data_mat + "', matricula.hora = '" + hora + "', matricula.FK_curso_cursoId = '" + id_curso + "', matricula.valor = '" + valor + "' WHERE matricula.matId = " + id_matricula;
+                    MySqlDataReader resultado3 = alterar3.ExecuteReader();
 
-            }
+                    conexao.Close();
+                    conexao2.Close();
+                    conexao3.Close();
+
+                    AlunoEditar alunoEdit = new AlunoEditar(permissao, id_usuario);
+                    alunoEdit.Show();
+                    this.Close();
+
+                }
+
         }
 
         public AlunoAlterar(string permissao, string id_usuario, string id_aluno)
@@ -139,6 +175,68 @@ namespace Projeto_Ensina_Mais
 
             string nome_responsavel = "";
             string hora = "";
+
+
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;";
+
+            string comando = @"SELECT nome FROM curso";
+
+            try
+            {
+                using (var conexao5 = new MySqlConnection(cmdconexao))
+                {
+                    conexao5.Open();
+                    MySqlCommand cmd = new MySqlCommand(comando, conexao5);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        string nomeDaColuna = reader["nome"].ToString();
+                        comboBox1.Items.Add(nomeDaColuna);
+                    }
+
+                    reader.Close();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+
+            // Conectando no Banco de Dados
+
+            MySqlConnection conexao4 = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD = ; Allow Zero Datetime=True; Convert Zero Datetime=True;");
+            conexao4.Open();
+
+            // Comando para Consultar
+
+            MySqlCommand consulta3 = new MySqlCommand();
+            consulta3.Connection = conexao4;
+            consulta3.CommandText = "SELECT curso.nome" +
+                "\r\nFROM curso" +
+                "\r\nINNER JOIN matricula ON matricula.FK_curso_cursoId = curso.cursoId" +
+                "\r\nINNER JOIN aluno ON matricula.FK_Aluno_alunoId = aluno.alunoId" +
+                "\r\nWHERE aluno.alunoId = " + id_aluno;
+
+            MySqlDataReader resultado4 = consulta3.ExecuteReader();
+            if (resultado4.HasRows)
+            {
+                while (resultado4.Read())
+                {
+                    comboBox1.Text = resultado4["nome"].ToString();
+
+                }
+
+            }
+
+            else
+            {
+
+                MessageBox.Show("Nenhum registro foi encontrado");
+
+            }
+
 
             MySqlConnection conexao2 = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=");
             conexao2.Open();
@@ -179,12 +277,12 @@ namespace Projeto_Ensina_Mais
             consulta.Connection = conexao;
             consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp, " +
                 "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2, " +
-                "matricula.hora, matricula.curso, matricula.valor" +
+                "matricula.hora, matricula.valor, curso.nome" +
                 "\r\nFROM aluno" +
                 "\r\nINNER JOIN respaluno ON respaluno.fk_Aluno_alunoId = aluno.alunoId" +
                 "\r\nINNER JOIN responsavel ON respaluno.fk_Responsavel_respId = responsavel.respId" +
-                "\r\nINNER JOIN mat_aluno ON mat_aluno.fk_Aluno_alunoId = aluno.alunoId" +
-                "\r\nINNER JOIN matricula ON matricula.matId = mat_aluno.fk_Matricula_matId" +
+                "\r\nINNER JOIN matricula ON matricula.fk_Aluno_alunoId = aluno.alunoId" +
+                "\r\nINNER JOIN curso ON matricula.FK_curso_cursoId = curso.cursoId" +
                 "\r\nWHERE aluno.alunoId = " + id_aluno;
 
             MySqlDataReader resultado = consulta.ExecuteReader();
@@ -203,7 +301,6 @@ namespace Projeto_Ensina_Mais
                     maskedTextBox3.Text = resultado["tel1"].ToString();
                     maskedTextBox4.Text = resultado["tel2"].ToString();
                     dateTimePicker3.Text = resultado["hora"].ToString();
-                    textBox5.Text = resultado["curso"].ToString();
                     textBox6.Text = resultado["valor"].ToString();
                     nome_responsavel = resultado["nome1"].ToString();
                     hora = resultado["hora"].ToString();
@@ -218,11 +315,11 @@ namespace Projeto_Ensina_Mais
 
             }
 
-            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;";
+            string cmdconexao2 = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;";
 
             try
             {
-                using (var conexao1 = new MySqlConnection(cmdconexao))
+                using (var conexao1 = new MySqlConnection(cmdconexao2))
                 {
                     conexao1.Open();
 
@@ -263,6 +360,7 @@ namespace Projeto_Ensina_Mais
                             }
                         }
                     }
+
                 }
             }
             catch (Exception ex)

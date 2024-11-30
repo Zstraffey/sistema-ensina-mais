@@ -183,3 +183,7 @@ C:\Users\Familia Costa\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\
 C:\Users\Familia Costa\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto .A2834C23.Up2Date
 C:\Users\Familia Costa\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.exe
 C:\Users\Familia Costa\Source\Repos\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto Ensina Mais.pdb
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaAlterar.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaCadastrar.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\Projeto_Ensina_Mais.AulaExcluir.resources
+C:\Users\Familia Costa\Source\Repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\obj\Debug\OOP_Teste.formADM.resources

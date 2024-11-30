@@ -26,15 +26,33 @@ namespace Projeto_Ensina_Mais
 
             this.permissao = permissao;
 
-            // Conectando no Banco de Dados
-            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =; Allow Zero Datetime=True;Convert Zero Datetime=True;";
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;Allow Zero Datetime=True;Convert Zero Datetime=True;";
 
-            MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
+            MySqlConnection conexao = new MySqlConnection(cmdconexao);
             conexao.Open();
 
-            string comando = @" SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'ensina_mais' AND TABLE_NAME IN ('aluno', 'responsavel');";
+            string comando = @"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
+                   WHERE TABLE_SCHEMA = 'ensina_mais' 
+                   AND TABLE_NAME IN ('aluno', 'responsavel')
+                   AND (TABLE_NAME != 'aluno' OR COLUMN_NAME != 'pfp');";
 
             dataGridView1.Columns.Clear();
+
+            // Dicionário para mapear os nomes das colunas
+            Dictionary<string, string> mapColunas = new Dictionary<string, string>
+                {
+                    { "alunoId", "Código do Aluno" },
+                    { "nome", "Nome do Aluno" },
+                    { "data_nasc", "Data de Nascimento" },
+                    { "rg", "RG do Aluno" },
+                    { "data_mat", "Data de Matrícula" },
+                    { "respId", "Código do Responsável" },
+                    { "nome1", "Nome do Responsável" },
+                    { "email1", "E-mail do Responsável" },
+                    { "cpf1", "CPF do Responsável" },
+                    { "tel1", "Telefone Principal" },
+                    { "tel2", "Telefone Secundário" }
+                };
 
             try
             {
@@ -47,14 +65,17 @@ namespace Projeto_Ensina_Mais
                     while (reader.Read())
                     {
                         string nomeDaColuna = reader["COLUMN_NAME"].ToString();
-                        comboBox1.Items.Add(nomeDaColuna);
-                        dataGridView1.Columns.Add(nomeDaColuna, nomeDaColuna);
+
+                        // Obtém o nome mapeado ou mantém o original
+                        string nomeExibido = mapColunas.ContainsKey(nomeDaColuna) ? mapColunas[nomeDaColuna] : nomeDaColuna;
+
+                        comboBox1.Items.Add(nomeDaColuna); // Adiciona o nome original no ComboBox
+                        dataGridView1.Columns.Add(nomeDaColuna, nomeExibido); // Adiciona com o nome exibido
                     }
 
                     reader.Close();
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
@@ -64,7 +85,7 @@ namespace Projeto_Ensina_Mais
 
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp," +
+            consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat," +
                 "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2 " +
                 "FROM aluno, responsavel, respaluno " +
                 "WHERE respaluno.fk_Aluno_alunoId = aluno.alunoId AND " +
@@ -86,7 +107,6 @@ namespace Projeto_Ensina_Mais
                     resultado["data_nasc"].ToString(),
                     resultado["rg"].ToString(),
                     resultado["data_mat"].ToString(),
-                    resultado["pfp"].ToString(),
                     resultado["respId"].ToString(),
                     resultado["nome1"].ToString(),
                     resultado["email1"].ToString(),
@@ -188,7 +208,7 @@ namespace Projeto_Ensina_Mais
             
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat, aluno.pfp," +
+            consulta.CommandText = "SELECT aluno.alunoId, aluno.nome, aluno.data_nasc, aluno.rg, aluno.data_mat," +
                 "responsavel.respId, responsavel.nome1, responsavel.email1, responsavel.cpf1, responsavel.tel1, responsavel.tel2 " +
                 "FROM aluno, responsavel, respaluno " +
                 "WHERE respaluno.fk_Aluno_alunoId = aluno.alunoId AND " +
@@ -209,7 +229,6 @@ namespace Projeto_Ensina_Mais
                     resultado["data_nasc"].ToString(),
                     resultado["rg"].ToString(),
                     resultado["data_mat"].ToString(),
-                    resultado["pfp"].ToString(),
                     resultado["respId"].ToString(),
                     resultado["nome1"].ToString(),
                     resultado["email1"].ToString(),

@@ -115,3 +115,5 @@ ALTER TABLE respaluno ADD CONSTRAINT FK_respaluno_1
     FOREIGN KEY (FK_aluno_alunoId)
     REFERENCES aluno (alunoId)
     ON DELETE CASCADE ON UPDATE CASCADE;
+
+INSERT INTO `usuario` (`userId`, `codFunc`, `nome`, `rg`, `cpf`, `pagamento`, `telefone`, `email`, `senha`, `permissao`, `data_nasc`, `pfp`) VALUES (NULL, 'adm', 'adm', 'rg', 'cpf', '0000', '(11)99999-9999', 'email@gmail.com', '123', 'adm', '2000-01-01', NULL);

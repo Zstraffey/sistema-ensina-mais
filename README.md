@@ -158,7 +158,7 @@ Posso Cadastrar, Visualizar, Alterar, Excluir Alunos
 
 ### Restrições e Relacionamentos
 1. **`matricula`**: 
-   - Referencia `aluno` (restrição de exclusão e atualização: RESTRICT).
+   - Referencia `aluno` (restrição de exclusão e atualização em cascata).
    - Referencia `usuario` e `curso` (exclusão e atualização em cascata).
 2. **`aula`**: 
    - Referencia `usuario` e `curso` (exclusão e atualização em cascata).

@@ -45,7 +45,7 @@ Após instalar o XAMPP e iniciá-lo pela primeira vez, você deve clicar em star
 
 ![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem1%20-%20exemplo.jpg)
 
-Após isto você deve clicar em Admin que está na frente de MYSQL.
+Em seguida você deve clicar em Admin que está na frente de MYSQL.
 
 ![Imagem de Exemplo - 2](Guia%20de%20Uso%20-%20Imagens/imagem2%20-%20exemplo.jpg)
 
@@ -61,16 +61,29 @@ Após digitar tudo corretamente, clique em criar
 
 ![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem5%20-%20exemplo.jpg)
 
-Após clicar em criar, certifique-se que o banco de dados ensina_mais está selecionado, caso não esteja selecionado clique em seu nome no menu a esquerda. Em seguida, clique em importar para subir o nosso código .sql do banco de dados
+Portanto, certifique-se que o banco de dados ensina_mais está selecionado, caso não esteja selecionado clique em seu nome no menu a esquerda. Em seguida, clique em importar para subir o nosso código .sql do banco de dados
 
 ![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem6%20-%20exemplo.jpg)
+
+Logo você deve clicar em escolher arquivo para assim selecionar nosso banco de dados.
+
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem7%20-%20exemplo.jpg)
 
 A seguir abrirá esta nova tela de seleção de arquivo, aqui você deve selecionar e clicar em abrir no arquivo ensina_mais.sql, ele está no seguinte caminho: sistema-ensina-mais-main\Projeto Ensina Mais - Banco De Dados Arquivos.
 
 Resumidamente, ele está dentro da pasta Projeto Ensina Mais - Banco de Dados Arquivos.
 
-![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem7%20-%20exemplo.jpg)
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem8%20-%20exemplo.jpg)
 
+Após isto você deve rolar para baixo e apertar em importar, ou dar o seguinte comando `CNTRL` + `ENTER`
 
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem9%20-%20exemplo.jpg)
 
+Pronto! Caso você tenha seguido todos os passos corretamente a última tela deve ser esta abaixo, agora com tudo tudo configurado você já pode iniciar o executável: 
 
+Projeto Ensina Mais.exe - Atalho
+
+Que se encontra na pasta principal, como primeira entrada você deve utilizar o seguinte usuário:
+
+Código de Funcionário: adm
+Senha: 123

@@ -43,7 +43,7 @@ Você pode fazer o downloando atualizado aqui: [XAMPP](https://www.apachefriends
 
 Após instalar o XAMPP e iniciá-lo pela primeira vez, você deve clicar em start que está em frente ao Apache e o Mysql
 
-![Imagem de Exemplo - 1]([https://exemplo.com/logo.png](https://github.com/Zstraffey/sistema-ensina-mais/blob/main/Guia%20de%20Uso%20-%20Imagens/imagem1%20-%20exemplo.jpg?raw=true))
+![Imagem de Exemplo - 1](Guia de Uso - Imagens/imagem1 - exemplo.jpg)
 
 
 

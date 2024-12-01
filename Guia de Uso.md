@@ -23,9 +23,11 @@ Estes são os requisitos necessários para o bom funcionamento do programa, abai
 
 Este programa é essencial para o sistema funcionar, pois utiliza a plataforma .NET Framework, que foi destrinchada melhor em nosso README, então sem ter este programa instalado em seu computador o sistema não irá iniciar
 
-Você pode fazer o downloando do .NET Framework atualizado aqui: [.NET FRAMEWORK](https://dotnet.microsoft.com/pt-br/download/dotnet-framework "Clique Aqui")
+Você pode fazer o downloando atualizado aqui: [.NET Framework](https://dotnet.microsoft.com/pt-br/download/dotnet-framework "Clique Aqui")
 
-### XAMPP
+Após instalar basta apenas executar o arquivo
+
+### XAMPP - Instalação
 
 XAMPP é um pacote de serviços com os principais servidores de código aberto do mercado, como o FTP, MySQL, e suporte para PHP e Perl. É um sistema livre que vai trablhar com as bases de dados MYSQL, que aqui foi substituído pelo MariaDB, mas claro há também as outras funcionalidades citadas acima, porém para o nosso sistema a funcionalidade crucial é o MariaDB. O nome XAMPP tem a seguinte explicação para fins didáticos: 
 
@@ -34,4 +36,14 @@ XAMPP é um pacote de serviços com os principais servidores de código aberto d
 * M - MariaDB.
 * P - PHP.
 * P - Perl.
+
+Você pode fazer o downloando atualizado aqui: [XAMPP](https://www.apachefriends.org/pt_br/index.html "Clique Aqui")
+
+## XAMPP - Configuração
+
+Após instalar o XAMPP e iniciá-lo pela primeira vez, você deve clicar em start que está em frente ao Apache e o Mysql
+
+![Imagem de Exemplo - 1]([https://exemplo.com/logo.png](https://github.com/Zstraffey/sistema-ensina-mais/blob/main/Guia%20de%20Uso%20-%20Imagens/imagem1%20-%20exemplo.jpg?raw=true))
+
+
 

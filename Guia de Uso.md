@@ -23,7 +23,7 @@ Estes são os requisitos necessários para o bom funcionamento do programa, abai
 
 Este programa é essencial para o sistema funcionar, pois utiliza a plataforma .NET Framework, que foi destrinchada melhor em nosso README, então sem ter este programa instalado em seu computador o sistema não irá iniciar
 
-Você pode fazer o downloando do .NET Framework atualizado aqui: [.NET Framework]([https://pages.github.com/](https://dotnet.microsoft.com/pt-br/download/dotnet-framework))
+Você pode fazer o downloando do .NET Framework atualizado aqui: [GitHub](https://dotnet.microsoft.com/pt-br/download/dotnet-framework "Clique Aqui")
 
 ### XAMPP
 

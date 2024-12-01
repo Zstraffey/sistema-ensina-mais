@@ -45,5 +45,21 @@ Após instalar o XAMPP e iniciá-lo pela primeira vez, você deve clicar em star
 
 ![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem1%20-%20exemplo.jpg)
 
+Após isto você deve clicar em Admin que está na frente de MYSQL.
+
+![Imagem de Exemplo - 2](Guia%20de%20Uso%20-%20Imagens/imagem2%20-%20exemplo.jpg)
+
+Assim irá abrir seu navegador padrão, mesmo que você utilize outros navegadores os passos serão os mesmos. Após abrir seu navegador padrão com essa tela inicial você deve clicar em novo, para criar um novo banco de dados.
+
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem3%20-%20exemplo.jpg)
+
+Então abrirá essa seguinte tela, aqui você deve digitar **ensina_mais** como nome do banco de dados, caso você digite errado o sistema não funcionará, pois essa referência ao nome é essencial para o seu bom funcionamento
+
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem4%20-%20exemplo.jpg)
+
+Após digitar tudo corretamente, clique em criar
+
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem5%20-%20exemplo.jpg)
+
 
 

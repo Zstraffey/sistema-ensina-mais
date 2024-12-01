@@ -61,5 +61,16 @@ Após digitar tudo corretamente, clique em criar
 
 ![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem5%20-%20exemplo.jpg)
 
+Após clicar em criar, certifique-se que o banco de dados ensina_mais está selecionado, caso não esteja selecionado clique em seu nome no menu a esquerda. Em seguida, clique em importar para subir o nosso código .sql do banco de dados
+
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem6%20-%20exemplo.jpg)
+
+A seguir abrirá esta nova tela de seleção de arquivo, aqui você deve selecionar e clicar em abrir no arquivo ensina_mais.sql, ele está no seguinte caminho: sistema-ensina-mais-main\Projeto Ensina Mais - Banco De Dados Arquivos.
+
+Resumidamente, ele está dentro da pasta Projeto Ensina Mais - Banco de Dados Arquivos.
+
+![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem7%20-%20exemplo.jpg)
+
+
 
 

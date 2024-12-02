@@ -117,3 +117,9 @@ ALTER TABLE respaluno ADD CONSTRAINT FK_respaluno_1
     ON DELETE CASCADE ON UPDATE CASCADE;
 
 INSERT INTO `usuario` (`userId`, `codFunc`, `nome`, `rg`, `cpf`, `pagamento`, `telefone`, `email`, `senha`, `permissao`, `data_nasc`, `pfp`) VALUES (NULL, 'adm', 'adm', 'rg', 'cpf', '0000', '(11)99999-9999', 'email@gmail.com', '123', 'adm', '2000-01-01', NULL);
+
+INSERT INTO curso(nome)
+VALUES("Desenvolvimento de Sistemas"),
+("Administracao"),
+("Eletronica"),
+("Automacao")

@@ -88,3 +88,6 @@ Que se encontra na pasta principal, como primeira entrada você deve utilizar o 
 Código de Funcionário: adm
 
 Senha: 123
+
+Nota: Atualmente o sistema foi desenvolvido pensando no usuário da escola, recomendamos que instale o sistema na área de trabalho e que altere a string pastaDestino no código para se adaptar onde está seu diretório de imagens
+

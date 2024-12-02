@@ -26,26 +26,26 @@ namespace Projeto_Ensina_Mais
 
         public AulaEditar(string permissao, string id_usuario)
         {
+            // Inicializando os componentes
             InitializeComponent();
-
             this.id_usuario = id_usuario;
-
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-
             this.permissao = permissao;
 
-            // Conectando no Banco de Dados
-            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =; Allow Zero Datetime=True;Convert Zero Datetime=True;";
-
-            MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
-            conexao.Open();
-
-            string comando = @" SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'ensina_mais' AND TABLE_NAME IN ('aula');";
-
-            dataGridView1.Columns.Clear();
+            // String de conexão com o banco de dados
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;Allow Zero Datetime=True;Convert Zero Datetime=True;";
+            MySqlConnection conexao = new MySqlConnection(cmdconexao);
 
             try
             {
+                conexao.Open();
+
+                // Consulta para buscar as colunas da tabela aula
+                string comando = @"SELECT COLUMN_NAME 
+                       FROM INFORMATION_SCHEMA.COLUMNS 
+                       WHERE TABLE_SCHEMA = 'ensina_mais' AND TABLE_NAME = 'aula'";
+                dataGridView1.Columns.Clear();
+
                 using (var conexao2 = new MySqlConnection(cmdconexao))
                 {
                     conexao2.Open();
@@ -55,58 +55,66 @@ namespace Projeto_Ensina_Mais
                     while (reader.Read())
                     {
                         string nomeDaColuna = reader["COLUMN_NAME"].ToString();
+
+                        // Ignorar as colunas de chaves estrangeiras
+                        if (nomeDaColuna == "FK_curso_cursoId" || nomeDaColuna == "FK_usuario_userId")
+                            continue;
+
                         comboBox1.Items.Add(nomeDaColuna);
                         dataGridView1.Columns.Add(nomeDaColuna, nomeDaColuna);
                     }
 
+                    // Adicionando manualmente a coluna para exibir o nome do curso
+                    dataGridView1.Columns.Add("nome_curso", "Nome do Curso");
+
                     reader.Close();
                 }
-            }
 
+                // Consulta SQL para buscar os dados das tabelas
+                string consultaSQL = @"SELECT a.aulaId, a.data_aula, a.horario, a.tema, 
+                                  a.numero_aula, a.prof1, a.prof2, 
+                                  c.nome AS nome_curso
+                           FROM aula a
+                           LEFT JOIN curso c ON a.FK_curso_cursoId = c.cursoId";
+
+                MySqlCommand consulta = new MySqlCommand(consultaSQL, conexao);
+                dataGridView1.Rows.Clear();
+
+                MySqlDataReader resultado = consulta.ExecuteReader();
+
+                if (resultado.HasRows)
+                {
+                    while (resultado.Read())
+                    {
+                        dataGridView1.Rows.Add(
+                            resultado["aulaId"].ToString(),
+                            resultado["data_aula"].ToString(),
+                            resultado["horario"].ToString(),
+                            resultado["tema"].ToString(),
+                            resultado["numero_aula"].ToString(),
+                            resultado["prof1"].ToString(),
+                            resultado["prof2"].ToString(),
+                            resultado["nome_curso"].ToString() // Nome do curso no lugar da chave estrangeira
+                        );
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum registro foi encontrado");
+                }
+
+                resultado.Close();
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
-
-            // Comando para Consultar
-
-            MySqlCommand consulta = new MySqlCommand();
-            consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aula";
-
-            // Operando com o dataGridView
-
-            dataGridView1.Rows.Clear();
-
-            MySqlDataReader resultado = consulta.ExecuteReader();
-            if (resultado.HasRows)
-
+            finally
             {
-                while (resultado.Read())
-                {
-
-                    dataGridView1.Rows.Add(resultado["aulaId"].ToString(),
-                    resultado["data_aula"].ToString(),
-                    resultado["horario"].ToString(),
-                    resultado["curso"].ToString(),
-                    resultado["tema"].ToString(),
-                    resultado["numero_aula"].ToString(),
-                    resultado["prof1"].ToString(),
-                    resultado["prof2"].ToString()
-                    );
-
-                }
-
+                conexao.Close();
             }
 
-            else
-            {
 
-                MessageBox.Show("Nenhum registro foi encontrado");
-
-            }
-
-            conexao.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -142,66 +150,94 @@ namespace Projeto_Ensina_Mais
         private void button1_Click(object sender, EventArgs e)
         {
             string campo = Convert.ToString(comboBox1.Text);
-
             string nomecampo = Convert.ToString(textBox1.Text);
 
-            if (nomecampo == "" || campo == "")
+            if (string.IsNullOrWhiteSpace(nomecampo) || string.IsNullOrWhiteSpace(campo))
             {
-
-                MessageBox.Show("Preencha o campo e sua informação para realizar a filtragem.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                MessageBox.Show("Preencha o campo e sua informação para realizar a filtragem.",
+                                "Erro",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
             else
             {
+               
+                string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;Allow Zero Datetime=True;Convert Zero Datetime=True;";
+                MySqlConnection conexao = new MySqlConnection(cmdconexao);
 
-                // Conectando no Banco de Dados
-
-                MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
-                conexao.Open();
-
-                // Filtragem
-
-                MySqlCommand consulta = new MySqlCommand();
-                consulta.Connection = conexao;
-                consulta.CommandText = "";
-
-                
-
-                    consulta.CommandText = "SELECT * FROM aula WHERE aula." + campo + " like '%" + nomecampo + "%'";
-
-
-                dataGridView1.Rows.Clear();
-
-                MySqlDataReader resultado = consulta.ExecuteReader();
-                if (resultado.HasRows)
+                try
                 {
-                    while (resultado.Read())
+                    conexao.Open();
+
+                  
+                    string consultaSQL;
+
+                    if (campo == "nome_curso") 
                     {
-
-                        dataGridView1.Rows.Add(resultado["aulaId"].ToString(),
-                        resultado["data_aula"].ToString(),
-                        resultado["horario"].ToString(),
-                        resultado["curso"].ToString(),
-                        resultado["tema"].ToString(),
-                        resultado["numero_aula"].ToString(),
-                        resultado["prof1"].ToString(),
-                        resultado["prof2"].ToString()
-                        );
-
+                        consultaSQL = @"SELECT a.aulaId, a.data_aula, a.horario, a.tema, 
+                                   a.numero_aula, a.prof1, a.prof2, 
+                                   c.nome AS nome_curso
+                            FROM aula a
+                            LEFT JOIN curso c ON a.FK_curso_cursoId = c.cursoId
+                            WHERE c.nome LIKE @nomecampo";
+                    }
+                    else 
+                    {
+                        consultaSQL = @"SELECT a.aulaId, a.data_aula, a.horario, a.tema, 
+                                   a.numero_aula, a.prof1, a.prof2, 
+                                   c.nome AS nome_curso
+                            FROM aula a
+                            LEFT JOIN curso c ON a.FK_curso_cursoId = c.cursoId
+                            WHERE a." + campo + " LIKE @nomecampo";
                     }
 
-                }
 
-                else
+                    MySqlCommand consulta = new MySqlCommand(consultaSQL, conexao);
+                    consulta.Parameters.AddWithValue("@nomecampo", "%" + nomecampo + "%");
+
+                    dataGridView1.Rows.Clear();
+
+                    MySqlDataReader resultado = consulta.ExecuteReader();
+
+                    if (resultado.HasRows)
+                    {
+                        while (resultado.Read())
+                        {
+                            dataGridView1.Rows.Add(
+                                resultado["aulaId"].ToString(),
+                                resultado["data_aula"].ToString(),
+                                resultado["horario"].ToString(),
+                                resultado["tema"].ToString(),
+                                resultado["numero_aula"].ToString(),
+                                resultado["prof1"].ToString(),
+                                resultado["prof2"].ToString(),
+                                resultado["nome_curso"].ToString() 
+                            );
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhum registro foi encontrado.",
+                                        "Informação",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    }
+
+                    resultado.Close();
+                }
+                catch (Exception ex)
                 {
-
-                    MessageBox.Show("Nenhum registro foi encontrado");
-
+                    MessageBox.Show("Ocorreu um erro durante a filtragem: " + ex.Message,
+                                    "Erro",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 }
-
-                conexao.Close();
-
+                finally
+                {
+                    conexao.Close();
+                }
             }
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -215,49 +251,71 @@ namespace Projeto_Ensina_Mais
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD =;Allow Zero Datetime=True;Convert Zero Datetime=True;");
-            conexao.Open();
 
             comboBox1.Text = "";
             textBox1.Text = "";
 
-            dataGridView1.Rows.Clear();
 
-            MySqlCommand consulta = new MySqlCommand();
-            consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aula";
+            string cmdconexao = "SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD=;Allow Zero Datetime=True;Convert Zero Datetime=True;";
+            MySqlConnection conexao = new MySqlConnection(cmdconexao);
 
-            dataGridView1.Rows.Clear();
-
-            MySqlDataReader resultado = consulta.ExecuteReader();
-            if (resultado.HasRows)
-
+            try
             {
-                while (resultado.Read())
+                conexao.Open();
+
+
+                string consultaSQL = @"SELECT a.aulaId, a.data_aula, a.horario, a.tema, 
+                                      a.numero_aula, a.prof1, a.prof2, 
+                                      c.nome AS nome_curso
+                               FROM aula a
+                               LEFT JOIN curso c ON a.FK_curso_cursoId = c.cursoId";
+
+                MySqlCommand consulta = new MySqlCommand(consultaSQL, conexao);
+
+
+                dataGridView1.Rows.Clear();
+
+
+                MySqlDataReader resultado = consulta.ExecuteReader();
+
+                if (resultado.HasRows)
                 {
-
-                    dataGridView1.Rows.Add(resultado["aulaId"].ToString(),
-                        resultado["data_aula"].ToString(),
-                        resultado["horario"].ToString(),
-                        resultado["curso"].ToString(),
-                        resultado["tema"].ToString(),
-                        resultado["numero_aula"].ToString(),
-                        resultado["prof1"].ToString(),
-                        resultado["prof2"].ToString()
+                    while (resultado.Read())
+                    {
+                        
+                        dataGridView1.Rows.Add(
+                            resultado["aulaId"].ToString(),
+                            resultado["data_aula"].ToString(),
+                            resultado["horario"].ToString(),
+                            resultado["tema"].ToString(),
+                            resultado["numero_aula"].ToString(),
+                            resultado["prof1"].ToString(),
+                            resultado["prof2"].ToString(),
+                            resultado["nome_curso"].ToString() 
                         );
-
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum registro foi encontrado.",
+                                    "Informação",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
                 }
 
+                resultado.Close();
             }
-
-            else
+            catch (Exception ex)
             {
-
-                MessageBox.Show("Nenhum registro foi encontrado");
-
+                MessageBox.Show("Ocorreu um erro ao recarregar os dados: " + ex.Message,
+                                "Erro",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
-
-            conexao.Close();
+            finally
+            {
+                conexao.Close();
+            }
         }
 
         Microsoft.Office.Interop.Excel.Application XcellApp = new Microsoft.Office.Interop.Excel.Application();

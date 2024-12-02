@@ -55,35 +55,66 @@ namespace Projeto_Ensina_Mais
             MySqlConnection conexao = new MySqlConnection("SERVER=localhost;DATABASE=ensina_mais;UID=root;PASSWORD = ; Allow Zero Datetime=True; Convert Zero Datetime=True;");
             conexao.Open();
 
+            // Primeiro, consulta para pegar o nome do curso usando o cursoId da tabela aula
+            MySqlCommand cmdCurso = new MySqlCommand("SELECT nome FROM curso WHERE cursoId = (SELECT FK_curso_cursoId FROM aula WHERE aulaId = @aulaId)", conexao);
+            cmdCurso.Parameters.AddWithValue("@aulaId", id_aula);
 
+            // Usando ExecuteScalar para pegar o nome do curso
+            object cursoResult = cmdCurso.ExecuteScalar();
+
+            // Verificando se o valor retornado é nulo
+            string nomeCurso = string.Empty;
+            if (cursoResult != null)
+            {
+                nomeCurso = cursoResult.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Curso não encontrado para o ID da aula fornecido.");
+                conexao.Close();
+                return; // Finaliza o processo, já que o curso não foi encontrado
+            }
+
+            // Agora consulta para pegar os dados da aula
             MySqlCommand consulta = new MySqlCommand();
             consulta.Connection = conexao;
-            consulta.CommandText = "SELECT * FROM aula WHERE aulaId = " + id_aula;
-
+            consulta.CommandText = "SELECT * FROM aula WHERE aulaId = @aulaId";
+            consulta.Parameters.AddWithValue("@aulaId", id_aula);
 
             MySqlDataReader resultado = consulta.ExecuteReader();
             if (resultado.HasRows)
             {
                 while (resultado.Read())
                 {
+                    // Preenche o ComboBox1 com o nome do curso
+                    textBox4.Text = nomeCurso;
+
+                    // Preenche os outros campos com os dados da tabela 'aula'
                     textBox1.Text = resultado["aulaId"].ToString();
                     textBox2.Text = resultado["data_aula"].ToString();
                     textBox3.Text = resultado["horario"].ToString();
-                    textBox4.Text = resultado["curso"].ToString();
                     textBox5.Text = resultado["tema"].ToString();
-                    textBox6.Text = resultado["numero_aula"].ToString();
+
+                    // Tenta preencher o NumericUpDown com o valor de 'numero_aula'
+                    if (decimal.TryParse(resultado["numero_aula"].ToString(), out decimal numeroAula))
+                    {
+                        textBox6.Text = numeroAula.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("O valor de 'numero_aula' não é válido para o NumericUpDown.");
+                    }
+
                     textBox7.Text = resultado["prof1"].ToString();
                     textBox8.Text = resultado["prof2"].ToString();
                 }
-
             }
-
             else
             {
-
                 MessageBox.Show("Nenhum registro foi encontrado");
-
             }
+            resultado.Close();
+            conexao.Close();
         }
     }
 }

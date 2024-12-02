@@ -26,7 +26,7 @@ namespace Projeto_Ensina_Mais
             {
                 string caminhoDaImagem = openFileDialog.FileName;
 
-                string pastaDestino = @"C:\Users\Familia Costa\source\repos\Zstraffey\sistema-ensina-mais\Projeto Ensina Mais\Imagens\alunos\";
+                string pastaDestino = @"D:\internet.info\Desktop\sistema-ensina-mais-main\Projeto Ensina Mais\Imagens";
 
                 MessageBox.Show(nomeArquivo);
                 MessageBox.Show(caminhoNoServidor);

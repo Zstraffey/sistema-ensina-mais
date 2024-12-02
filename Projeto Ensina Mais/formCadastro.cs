@@ -137,7 +137,7 @@ namespace OOP_Teste
                 {
                     nome = nomesAluno[x];
                 }
-                else if (tipo == "usuário") 
+                else if (tipo == "usuario") 
                 {
                     nome = nomesUsuario[x];
                 }

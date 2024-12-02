@@ -27,43 +27,47 @@ namespace Projeto_Ensina_Mais
       
                 if (permissao == "pro")
                 {
-                    label1.Text = "Menu Professor";
-                    button4.Visible = true;
+                    pictureBox1.Visible = false;
+                    pictureBox3.Visible = false;
+                    pictureBox2.Visible = false;
+                    pictureBox4.Visible = true;
                 }
                 else if (permissao == "sec")
-                {
-                    label1.Text = "Menu Secretaria";
-                    button1.Visible = true;
-                    button2.Visible = true;
+                {                    
+                    pictureBox1.Visible = true;
+                    pictureBox3.Visible = true;
+                    pictureBox2.Visible = false;
+                    pictureBox4.Visible = false;
                 }
                 else if (permissao == "adm")
                 {
-                    label1.Text = "Menu Administrador";
-                    button1.Visible = true;
-                    button2.Visible = true;
-                    button3.Visible = true;
-                    button4.Visible = true;
+                    //groupBox1.Visible = true;
                 }
             }
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+   
+
+        private void tela_inicial_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             AlunoEditar alunoEdit = new AlunoEditar(permissao, id_usuario);
             alunoEdit.Show();
             this.Close();
         }
 
-        
-
-        private void button3_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             formADM novoForm = new formADM();
             novoForm.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
             formADM novoForm = new formADM();
             novoForm.Show();
@@ -71,9 +75,31 @@ namespace Projeto_Ensina_Mais
 
         private void button4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
             AulaEditar aulaEdit = new AulaEditar(permissao, id_usuario);
             aulaEdit.Show();
             this.Close();
         }
+
+      
     }
 }

@@ -79,9 +79,9 @@ Após isto você deve rolar para baixo e apertar em importar, ou dar o seguinte 
 
 ![Imagem de Exemplo - 1](Guia%20de%20Uso%20-%20Imagens/imagem9%20-%20exemplo.jpg)
 
-Pronto! Caso você tenha seguido todos os passos corretamente a última tela deve ser esta abaixo, agora com tudo tudo configurado você já pode iniciar o executável: 
+Pronto! Caso você tenha seguido todos os passos corretamente a última tela deve ser esta abaixo, agora com tudo tudo configurado você já pode iniciar o executável, que está no seguinte caminho: 
 
-Projeto Ensina Mais.exe - Atalho
+sistema-ensina-mais-main\Projeto Ensina Mais\bin\Debug
 
 Que se encontra na pasta principal, como primeira entrada você deve utilizar o seguinte usuário:
 
@@ -89,5 +89,5 @@ Código de Funcionário: adm
 
 Senha: 123
 
-Nota: Atualmente o sistema foi desenvolvido pensando no usuário da escola, recomendamos que instale o sistema na área de trabalho e que altere a string pastaDestino no código para se adaptar onde está seu diretório de imagens
+**Nota: Atualmente o sistema foi desenvolvido pensando no usuário da escola, recomendamos que instale o sistema na área de trabalho e que altere a string pastaDestino no código para se adaptar onde está seu diretório de imagens**
 

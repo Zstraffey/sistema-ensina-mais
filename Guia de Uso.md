@@ -29,7 +29,7 @@ Após instalar basta apenas executar o arquivo
 
 ### XAMPP - Instalação
 
-XAMPP é um pacote de serviços com os principais servidores de código aberto do mercado, como o FTP, MySQL, e suporte para PHP e Perl. É um sistema livre que vai trablhar com as bases de dados MYSQL, que aqui foi substituído pelo MariaDB, mas claro há também as outras funcionalidades citadas acima, porém para o nosso sistema a funcionalidade crucial é o MariaDB. O nome XAMPP tem a seguinte explicação para fins didáticos: 
+XAMPP é um pacote de serviços com os principais servidores de código aberto do mercado, como o FTP, MySQL, e suporte para PHP e Perl. É um sistema livre que vai trabalhar com as bases de dados MYSQL, que aqui foi substituído pelo MariaDB, mas claro há também as outras funcionalidades citadas acima, porém para o nosso sistema a funcionalidade crucial é o MariaDB. O nome XAMPP tem a seguinte explicação para fins didáticos: 
 
 * X  - (para qualquer dos diferentes sistemas operativos).
 * A - Apache.
@@ -37,7 +37,7 @@ XAMPP é um pacote de serviços com os principais servidores de código aberto d
 * P - PHP.
 * P - Perl.
 
-Você pode fazer o downloando atualizado aqui: [XAMPP](https://www.apachefriends.org/pt_br/index.html "Clique Aqui")
+Você pode fazer o download atualizado aqui: [XAMPP](https://www.apachefriends.org/pt_br/index.html "Clique Aqui")
 
 ## XAMPP - Configuração
 

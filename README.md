@@ -38,6 +38,10 @@ Criar, Ler, Alterar e Remover dados de funcionários, com todas essas ações es
 
 Criar, Ler, Alterar e Remover dados de alunos, por se tratar de um sistema de franqueadora não é necessário a guarda permanente que um tipo de guarda de dados de crianças ou adolescentes, ou a documentos que devem ser preservados por tempo indeterminado.
 
+> CRUD de Aulas
+
+Criar, Ler, Alterar e Remover Aulas, que são uma parte essencial do nosso sistema, auxiliando os professores a organizar melhor suas rotinas estudantis
+
 > CRUD de Produtos
 
 Criar, Ler, Alterar e Remover dados de produtos, na qual a matriz local da franqueadora distribui.
